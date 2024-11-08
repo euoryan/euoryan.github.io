@@ -58,7 +58,7 @@
 
         .nav-toggle {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             padding: 0.5rem;
         }
@@ -89,6 +89,10 @@
         }
 
         .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -134,7 +138,7 @@
         }
 
         .hero h1 .name:hover::after {
-            width: 115px; /* Increased the underline width */
+            width: 115px;
         }
 
         .hero p {
@@ -167,13 +171,13 @@
 
         .scroll-indicator {
             position: absolute;
-            bottom: 0.5rem; /* Move the scroll indicator lower */
+            bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 1.5s infinite;
-            font-size: 1.2rem; /* Reduce the size of the scroll indicator */
-            padding: 0.5rem; /* Add some padding to the scroll indicator */
-            cursor: pointer; /* Add a pointer cursor to indicate clickability */
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            cursor: pointer;
         }
 
         .scroll-indicator i {
@@ -182,8 +186,8 @@
         }
 
         .scroll-indicator:active {
-            transform: translateX(-50%) translateY(5px); /* Add a slight vertical offset on click */
-            transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+            transform: translateX(-50%) translateY(5px);
+            transition: transform 0.2s ease-in-out;
         }
 
         @keyframes bounce {
@@ -362,10 +366,10 @@
         <div class="nav-content">
             <a href="#" class="logo">euo<span>ryan</span></a>
             <div class="nav-toggle">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars" style="font-size: 1.2rem;"></i>
             </div>
             <div class="nav-links">
-                <a href="#sobre">Sobre</a>
+                <a href="#" class="active">Home</a>
                 <a href="#projetos">Projetos</a>
                 <a href="#skills">Skills</a>
                 <a href="#contato">Contato</a>
@@ -382,7 +386,7 @@
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-    </section>    
+    </section>
 
     <section id="projetos">
         <div class="section-content">
@@ -459,8 +463,12 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('show');
+                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+                link.classList.add('active');
             });
         });
+
+        document.querySelector('.nav-links a:first-child').classList.add('active');
     </script>
 </body>
 </html>
