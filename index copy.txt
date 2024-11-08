@@ -56,13 +56,6 @@
             color: var(--accent-color);
         }
 
-        .nav-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
         .nav-links {
             display: flex;
             gap: 1.5rem;
@@ -329,25 +322,8 @@
                 font-size: 2.5rem;
             }
 
-            .nav-toggle {
-                display: block;
-            }
-
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background-color: var(--card-bg);
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem;
-                z-index: 999;
-            }
-
-            .nav-links.show {
-                display: flex;
             }
 
             section {
@@ -361,9 +337,6 @@
     <nav>
         <div class="nav-content">
             <a href="#" class="logo">euo<span>ryan</span></a>
-            <div class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
             <div class="nav-links">
                 <a href="#sobre">Sobre</a>
                 <a href="#projetos">Projetos</a>
@@ -449,11 +422,11 @@
     </footer>
 
     <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
