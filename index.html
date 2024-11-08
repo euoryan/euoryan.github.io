@@ -375,14 +375,14 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1><span class="ola">Olá,</span><br><span>eu sou o <span class="name">Ryan!</span></span></h1>
+            <h1>Olá,<br><span>eu sou o <span class="name">Ryan!</span></span></h1>
             <p>Desenvolvedor fullstack especializado em criar experiências digitais únicas e impactantes.</p>
             <a href="#projetos" class="btn">Ver Projetos</a>
             <div class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-    </section>        
+    </section>    
 
     <section id="projetos">
         <div class="section-content">
@@ -454,6 +454,12 @@
 
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+            });
         });
     </script>
 </body>
