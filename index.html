@@ -91,6 +91,7 @@
             align-items: center;
             padding: 0 1.5rem;
             background: linear-gradient(165deg, var(--bg-color) 60%, #1a0808 100%);
+            position: relative;
         }
 
         .hero-content {
@@ -103,6 +104,30 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             line-height: 1.2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero h1 .name {
+            position: relative;
+            color: var(--accent-color);
+            display: inline-block;
+        }
+
+        .hero h1 .name::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.1s ease-in-out;
+        }
+
+        .hero h1 .name:hover::after {
+            width: 110px; /* Increased the underline width */
         }
 
         .hero p {
@@ -131,6 +156,39 @@
         .btn:hover {
             background: var(--hover-bg);
             border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 0.5rem; /* Move the scroll indicator lower */
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 1.5s infinite;
+            font-size: 1.2rem; /* Reduce the size of the scroll indicator */
+            padding: 0.5rem; /* Add some padding to the scroll indicator */
+            cursor: pointer; /* Add a pointer cursor to indicate clickability */
+        }
+
+        .scroll-indicator i {
+            font-size: inherit;
+            color: #fff;
+        }
+
+        .scroll-indicator:active {
+            transform: translateX(-50%) translateY(5px); /* Add a slight vertical offset on click */
+            transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         section {
@@ -290,9 +348,12 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Olá, eu sou <br><span class="accent">Ryan</span></h1>
+            <h1>Olá, meu nome é<br><span class="name">Ryan</span></h1>
             <p>Desenvolvedor fullstack especializado em criar experiências digitais únicas e impactantes.</p>
             <a href="#projetos" class="btn">Ver Projetos</a>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </section>
 
@@ -359,5 +420,14 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
