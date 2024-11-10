@@ -252,6 +252,7 @@ section {
     height: 200px;
     overflow: hidden;
     position: relative;
+    flex: 0 0 auto; /* Impede que a imagem se expanda */
 }
 
 .project-image img {
@@ -267,6 +268,12 @@ section {
 
 .project-content {
     padding: 1.25rem;
+    flex: 1 0 auto; /* Permite que o conteúdo se expanda */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    position: relative;
+    z-index: 2;
 }
 
 .project-title {
@@ -284,6 +291,7 @@ section {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .tag {
@@ -378,5 +386,9 @@ footer {
 
     section {
         padding: 3rem 1rem;
+    }
+
+    .project-image {
+        height: 180px; /* Altura reduzida para mobile */
     }
 }
