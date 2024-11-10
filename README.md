@@ -41,10 +41,10 @@ const techStack = {
 ### Mobile
 <div align="center">
     <div style="display: flex; justify-content: center; gap: 15px; overflow-x: auto; padding: 20px 0;">
-        <img src="./assets/image/mobile.png" alt="Versão Mobile - Página Principal" width="200" style="border-radius: 8px;"/>
-        <img src="./assets/image/mobile2.png" alt="Versão Mobile - Segunda Página" width="200" style="border-radius: 8px;"/>
-        <img src="./assets/image/mobile3.png" alt="Versão Mobile - Terceira Página" width="200" style="border-radius: 8px;"/>
-        <img src="./assets/image/mobile4.png" alt="Versão Mobile - Quarta Página" width="200" style="border-radius: 8px;"/>
+        <img src="./assets\layout\mobile.png" alt="Versão Mobile - Página Principal" width="200" style="border-radius: 8px;"/>
+        <img src="./assets\layout\mobile2.png" alt="Versão Mobile - Segunda Página" width="200" style="border-radius: 8px;"/>
+        <img src="./assets\layout\mobile3.png" alt="Versão Mobile - Terceira Página" width="200" style="border-radius: 8px;"/>
+        <img src="./assets\layout\mobile4.png" alt="Versão Mobile - Quarta Página" width="200" style="border-radius: 8px;"/>
     </div>
 </div>
 
