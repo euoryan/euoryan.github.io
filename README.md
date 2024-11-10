@@ -35,7 +35,7 @@ const techStack = {
 
 ### Desktop
 <div align="center">
-    <img src="./assets/image/desktop.png" alt="Versão Desktop - Página Principal" width="800" style="border-radius: 10px;"/>
+    <img src="./assets\layout\desktop.png" alt="Versão Desktop - Página Principal" width="800" style="border-radius: 10px;"/>
 </div>
 
 ### Mobile
