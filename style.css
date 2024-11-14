@@ -30,9 +30,8 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 10, 10, 0.98); /* Aumentado opacity ao invés de blur */
     padding: 1rem;
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
 }
@@ -172,7 +171,8 @@ nav {
     position: absolute;
     bottom: 0.5rem;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateZ(0);
+    will-change: transform;
     animation: bounce 1.5s infinite;
     font-size: 1.2rem;
     padding: 0.5rem;
@@ -208,8 +208,7 @@ section {
 }
 
 #projetos, #skills {
-    background: rgba(10, 10, 10, 0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(10, 10, 10, 0.8);
 }
 
 .section-content {
@@ -240,11 +239,13 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
+    transform: translateZ(0); /* Hardware acceleration */
+    will-change: transform;
 }
 
 .project-card:hover {
     background: var(--hover-bg);
-    transform: translateY(-5px);
+    transform: translateZ(0) translateY(-5px);
 }
 
 .project-image {
@@ -329,8 +330,7 @@ section {
 }
 
 footer {
-    background: rgba(10, 10, 10, 0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(10, 10, 10, 0.8);
     color: white;
     padding: 3rem 1.5rem;
     text-align: center;
@@ -389,6 +389,7 @@ footer {
     }
 
     .project-image {
+        contain: content;
         height: 180px; /* Altura reduzida para mobile */
     }
 }
