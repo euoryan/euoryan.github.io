@@ -77,6 +77,70 @@
                     transform: translateX(-70%);
                 }
             }
+            .hero-content {
+                position: relative;
+                z-index: 1;
+            }
+
+            .watermark {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 15rem;
+                color: rgba(255, 255, 255, 0.03);
+                z-index: 0;
+                font-family: serif;
+                user-select: none;
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+
+            /* Tablet */
+            @media (max-width: 768px) {
+                .watermark {
+                    font-size: 10rem;
+                    right: 2%;
+                    top: 40%;
+                }
+            }
+
+            /* Mobile grande */
+            @media (max-width: 576px) {
+                .watermark {
+                    font-size: 8rem;
+                    right: 0;
+                    top: 30%;
+                    color: rgba(255, 255, 255, 0.04);
+                }
+            }
+
+            /* Mobile pequeno */
+            @media (max-width: 375px) {
+                .watermark {
+                    font-size: 6rem;
+                    top: 25%;
+                    right: 5px;
+                    color: rgba(255, 255, 255, 0.05);
+                }
+            }
+
+            /* Ajuste para telas muito pequenas */
+            @media (max-width: 320px) {
+                .watermark {
+                    font-size: 5rem;
+                    top: 20%;
+                }
+            }
+
+            /* Ajuste para orientação paisagem em dispositivos móveis */
+            @media (max-height: 500px) and (orientation: landscape) {
+                .watermark {
+                    font-size: 6rem;
+                    top: 50%;
+                    right: 2%;
+                }
+            }
         </style>
     </head>
 <body>
@@ -97,6 +161,7 @@
 
     <section class="hero">
         <div class="hero-content">
+            <div class="watermark">さ</div>
             <h1>Olá, prazer,<br><span>eu sou o <span class="name">Ryan! <i class="fa-solid fa-code code-icon">
                 <div class="road-reflection"></div>
             </i></span></span></h1>
