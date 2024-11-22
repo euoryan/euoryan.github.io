@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="icon" type="image/png" href="assets\images\favicon\favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-bg: #0d1117;
+            --color-text: #c9d1d9;
+            --color-border: #30363d;
+            --color-header: #161b22;
+            --color-btn-bg: #21262d;
+            --color-btn-hover: #2d333b;
+            --color-btn-border: #30363d;
+            --color-text-hover: #ffffff;
+            --color-footer-text: #8b949e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: var(--color-header);
+            padding: 20px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+
+        .contact-card {
+            background-color: var(--color-btn-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 16px;
+            margin: 24px 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            padding-left: 12px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-link {
+            color: var(--color-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+        }
+
+        .contact-link:hover {
+            background-color: var(--color-btn-hover);
+            color: var(--color-text-hover);
+        }
+
+        .icon {
+            font-size: 16px;
+            width: 16px;
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .contact-link:hover .icon {
+            color: var(--color-text-hover);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid var(--color-btn-border);
+            border-radius: 6px;
+            appearance: none;
+            background-color: var(--color-btn-bg);
+            color: var(--color-text);
+            transition: .2s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--color-btn-hover);
+            border-color: var(--color-btn-border);
+            color: var(--color-text-hover);
+        }
+
+        .btn i {
+            font-size: 14px;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Contato</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="contact-card">
+            <h2 class="section-title">Redes Sociais</h2>
+            <ul class="contact-list">
+                <li class="contact-item">
+                    <a href="https://github.com/seu-usuario" class="contact-link">
+                        <i class="fab fa-github icon"></i>
+                        GitHub
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="https://linkedin.com/in/seu-perfil" class="contact-link">
+                        <i class="fab fa-linkedin icon"></i>
+                        LinkedIn
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="https://instagram.com/seu-usuario" class="contact-link">
+                        <i class="fab fa-instagram icon"></i>
+                        Instagram
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="https://twitter.com/seu-usuario" class="contact-link">
+                        <i class="fab fa-twitter icon"></i>
+                        Twitter
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="contact-card">
+            <h2 class="section-title">Meios de Contato</h2>
+            <ul class="contact-list">
+                <li class="contact-item">
+                    <a href="mailto:seu-email@exemplo.com" class="contact-link">
+                        <i class="far fa-envelope icon"></i>
+                        seu-email@exemplo.com
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="tel:+5500000000000" class="contact-link">
+                        <i class="fas fa-phone icon"></i>
+                        Telefone
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="#" class="btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+            Voltar
+        </a>
+    </main>
+
+    <footer class="footer">
+        <style>
+            .footer {
+                margin-top: auto;
+                padding: 16px 0;
+                font-size: 12px;
+                color: #8b949e;
+                border-top: 1px solid #30363d;
+                background-color: #0d1117;
+            }
+    
+            .footer-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 32px; /* Espaçamento entre os elementos */
+                max-width: 1200px;
+                margin: auto;
+                padding: 0 16px;
+            }
+    
+            .footer-links {
+                display: flex;
+                gap: 16px;
+            }
+    
+            .footer-icons {
+                display: flex;
+                gap: 12px;
+            }
+    
+            .footer-icons a,
+            .footer-links a {
+                color: #8b949e;
+                text-decoration: none;
+            }
+    
+            .footer-icons a:hover,
+            .footer-links a:hover {
+                color: #ffffff;
+            }
+    
+            .footer-container span {
+                color: #8b949e;
+            }
+    
+            @media (max-width: 768px) {
+                .footer-container {
+                    flex-wrap: wrap;
+                    gap: 16px; /* Menor espaçamento para telas pequenas */
+                    text-align: center;
+                }
+    
+                .footer-links, .footer-icons {
+                    justify-content: center;
+                }
+            }
+        </style>
+    
+        <div class="footer-container">
+            <!-- Links -->
+            <div class="footer-links">
+                <a href="assets/pages/politicadeprivacidade.html" target="_blank">Política de Privacidade</a>
+                <a href="assets/pages/termosdeuso.html" target="_blank">Termos de Uso</a>
+                <a href="mailto:ryanzera.dev@gmail.com">Contato</a>
+            </div>
+    
+            <!-- Ícones -->
+            <div class="footer-icons">
+                <a href="https://www.instagram.com/euoryan/" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/euoryan" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/euoryan/" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+    
+            <!-- Direitos autorais -->
+            <div class="footer-rights">
+                <span>© 2024 Ryan - Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
