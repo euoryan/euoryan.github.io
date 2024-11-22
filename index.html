@@ -36,9 +36,6 @@
                 <p>Desenvolvedor Full Stack focado em extensões web, sites modernos e aplicações Python.</p>
                 <a href="#projetos" class="btn">Ver Projetos</a>
             </div>
-            <button class="scroll-indicator" aria-label="Rolar para projetos">
-                <i class="fas fa-chevron-down"></i>
-            </button>
         </section>
 
         <section id="projetos">
@@ -174,17 +171,25 @@
             <i class="fas fa-arrow-up"></i>
         </a>
     
+        <button class="scroll-indicator" aria-label="Rolar para projetos">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    
         <script src="script.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const backToTopButton = document.querySelector('.back-to-top');
+                const scrollIndicator = document.querySelector('.scroll-indicator');
                 
                 // Mostrar/ocultar botão baseado no scroll
                 window.addEventListener('scroll', function() {
+                    // Altera a lógica para mostrar/esconder o indicador de scroll
                     if (window.scrollY > 300) {
                         backToTopButton.classList.add('visible');
+                        scrollIndicator.style.display = 'none';
                     } else {
                         backToTopButton.classList.remove('visible');
+                        scrollIndicator.style.display = 'flex';
                     }
                 });
 
@@ -198,7 +203,6 @@
                 });
 
                 // Scroll suave para o indicador de scroll
-                const scrollIndicator = document.querySelector('.scroll-indicator');
                 scrollIndicator.addEventListener('click', function(e) {
                     e.preventDefault();
                     const projectsSection = document.querySelector('#projetos');

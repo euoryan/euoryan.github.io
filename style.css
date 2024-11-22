@@ -214,10 +214,10 @@ nav {
 /* Scroll Indicator */
 .scroll-indicator {
     position: fixed;
-    bottom: 3rem;
+    bottom: 2rem;  /* Adjusted to be slightly higher */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
+    z-index: 10;  /* Increased z-index */
     cursor: pointer;
     width: 40px;
     height: 40px;
