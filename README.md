@@ -1,6 +1,6 @@
 # Projeto
 
-Link de visualização: https://euoryan.com.br/
+Link de visualização: https://euoryan.com/
                        our https://euoryan.github.io
 
 <br/>
