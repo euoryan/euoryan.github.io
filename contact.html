@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-    <link rel="icon" type="image/png" href="assets\images\favicon\euoryan.png">
+    <title>Contato - Eu o Ryan</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/images/favicon/euoryan.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -17,132 +17,148 @@
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
             --color-footer-text: #8b949e;
+            --transition-smooth: all 0.3s ease-in-out;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--color-bg);
             color: var(--color-text);
-            line-height: 1.5;
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            scroll-behavior: smooth;
         }
 
         .header {
             background-color: var(--color-header);
-            padding: 20px;
+            padding: 20px 0;
             border-bottom: 1px solid var(--color-border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
             padding: 0 16px;
             width: 100%;
         }
 
-        .contact-card {
+        h1 {
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-content {
             background-color: var(--color-btn-bg);
             border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 16px;
-            margin: 24px 0;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .section-title {
-            font-size: 16px;
-            color: var(--color-text);
-            margin-bottom: 8px;
-            padding-left: 12px;
-            font-weight: 500;
+        .contact-content:hover {
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
 
-        h1 {
+        .contact-content h2 {
+            color: var(--color-text-hover);
+            margin-bottom: 16px;
             font-size: 20px;
-            color: #ffffff;
-            font-weight: 500;
-            line-height: 1.5;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 8px;
         }
 
         .contact-list {
-            list-style: none;
+            list-style-type: none;
+            margin-bottom: 24px;
         }
 
         .contact-item {
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
+            margin-bottom: 12px;
         }
 
         .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             color: var(--color-text);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            transition: all 0.2s ease;
-            border-radius: 6px;
+            transition: var(--transition-smooth);
         }
 
         .contact-link:hover {
-            background-color: var(--color-btn-hover);
             color: var(--color-text-hover);
         }
 
-        .icon {
-            font-size: 16px;
-            width: 16px;
+        .contact-link .icon {
+            font-size: 20px;
+            width: 24px;
             text-align: center;
-            color: var(--color-text);
-        }
-
-        .contact-link:hover .icon {
-            color: var(--color-text-hover);
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 5px 16px;
-            font-size: 14px;
+            gap: 10px;
+            padding: 5px 18px;
+            font-size: 15px;
             font-weight: 500;
-            line-height: 20px;
+            line-height: 22px;
             white-space: nowrap;
             vertical-align: middle;
             cursor: pointer;
             user-select: none;
             border: 1px solid var(--color-btn-border);
-            border-radius: 6px;
+            border-radius: 5px;
             appearance: none;
             background-color: var(--color-btn-bg);
             color: var(--color-text);
-            transition: .2s;
+            transition: var(--transition-smooth);
             text-decoration: none;
+            margin-bottom: 40px;
         }
 
         .btn:hover {
             background-color: var(--color-btn-hover);
-            border-color: var(--color-btn-border);
+            border-color: var(--color-text);
             color: var(--color-text-hover);
+            text-decoration: none;
+            transform: none;
         }
 
         .btn i {
-            font-size: 14px;
+            font-size: 16px;
         }
 
         main {
             flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .contact-content {
+                padding: 16px;
+                margin: 24px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -154,29 +170,29 @@
     </header>
 
     <main class="container">
-        <div class="contact-card">
-            <h2 class="section-title">Redes Sociais</h2>
+        <div class="contact-content">
+            <h2>Redes Sociais</h2>
             <ul class="contact-list">
                 <li class="contact-item">
-                    <a href="https://github.com/euoryan" class="contact-link">
+                    <a href="https://github.com/euoryan" target="_blank" class="contact-link">
                         <i class="fab fa-github icon"></i>
                         GitHub
                     </a>
                 </li>
                 <li class="contact-item">
-                    <a href="https://linkedin.com/in/euoryan" class="contact-link">
+                    <a href="https://linkedin.com/in/euoryan" target="_blank" class="contact-link">
                         <i class="fab fa-linkedin icon"></i>
                         LinkedIn
                     </a>
                 </li>
                 <li class="contact-item">
-                    <a href="https://www.instagram.com/euoryan/" class="contact-link">
+                    <a href="https://www.instagram.com/euoryan/" target="_blank" class="contact-link">
                         <i class="fab fa-instagram icon"></i>
                         Instagram
                     </a>
                 </li>
                 <li class="contact-item">
-                    <a href="https://twitter.com/euoryan_" class="contact-link">
+                    <a href="https://twitter.com/euoryan_" target="_blank" class="contact-link">
                         <i class="fab fa-twitter icon"></i>
                         Twitter
                     </a>
@@ -184,8 +200,8 @@
             </ul>
         </div>
 
-        <div class="contact-card">
-            <h2 class="section-title">Meios de Contato</h2>
+        <div class="contact-content">
+            <h2>Meios de Contato</h2>
             <ul class="contact-list">
                 <li class="contact-item">
                     <a href="mailto:ryanzera.dev@gmail.com" class="contact-link">
@@ -210,10 +226,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // URL do footer no GitHub Raw
             const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
         
-            // Função para carregar o footer
             function loadFooter() {
                 fetch(footerUrl)
                     .then(response => {
@@ -223,20 +237,16 @@
                         return response.text();
                     })
                     .then(html => {
-                        // Criar um container para o footer
                         const footerContainer = document.createElement('div');
                         footerContainer.innerHTML = html.trim();
         
-                        // Pegar o footer do HTML carregado
                         const newFooter = footerContainer.querySelector('footer');
         
                         if (newFooter) {
-                            // Substituir o footer existente
                             const existingFooter = document.querySelector('footer');
                             if (existingFooter) {
                                 existingFooter.parentNode.replaceChild(newFooter, existingFooter);
                             } else {
-                                // Se não existir footer, adicionar ao final do body
                                 document.body.appendChild(newFooter);
                             }
                         } else {
@@ -246,7 +256,6 @@
                     .catch(error => {
                         console.error('Erro ao carregar o footer:', error);
                         
-                        // Criar footer de fallback
                         const fallbackFooter = document.createElement('footer');
                         fallbackFooter.className = 'footer';
                         fallbackFooter.innerHTML = `
@@ -257,7 +266,6 @@
                             </div>
                         `;
                         
-                        // Substituir ou adicionar footer de fallback
                         const existingFooter = document.querySelector('footer');
                         if (existingFooter) {
                             existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
@@ -267,7 +275,6 @@
                     });
             }
         
-            // Chamar a função para carregar o footer
             loadFooter();
         });
     </script>
