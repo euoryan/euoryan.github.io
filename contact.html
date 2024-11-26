@@ -208,91 +208,68 @@
         </a>
     </main>
 
-    <footer class="footer">
-        <style>
-            .footer {
-                margin-top: auto;
-                padding: 16px 0;
-                font-size: 12px;
-                color: #8b949e;
-                border-top: 1px solid #30363d;
-                background-color: #0d1117;
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL do footer no GitHub Raw
+            const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/main/assets/pages/footer.html';
+        
+            // Função para carregar o footer
+            function loadFooter() {
+                fetch(footerUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar o footer');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        // Criar um container para o footer
+                        const footerContainer = document.createElement('div');
+                        footerContainer.innerHTML = html.trim();
+        
+                        // Pegar o footer do HTML carregado
+                        const newFooter = footerContainer.querySelector('footer');
+        
+                        if (newFooter) {
+                            // Substituir o footer existente
+                            const existingFooter = document.querySelector('footer');
+                            if (existingFooter) {
+                                existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                            } else {
+                                // Se não existir footer, adicionar ao final do body
+                                document.body.appendChild(newFooter);
+                            }
+                        } else {
+                            throw new Error('Nenhum footer encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar o footer:', error);
+                        
+                        // Criar footer de fallback
+                        const fallbackFooter = document.createElement('footer');
+                        fallbackFooter.className = 'footer';
+                        fallbackFooter.innerHTML = `
+                            <div class="footer-container">
+                                <div class="footer-rights">
+                                    <span>© 2024 por Ryan</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Substituir ou adicionar footer de fallback
+                        const existingFooter = document.querySelector('footer');
+                        if (existingFooter) {
+                            existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                        } else {
+                            document.body.appendChild(fallbackFooter);
+                        }
+                    });
             }
-    
-            .footer-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 32px; /* Espaçamento entre os elementos */
-                max-width: 1200px;
-                margin: auto;
-                padding: 0 16px;
-            }
-    
-            .footer-links {
-                display: flex;
-                gap: 16px;
-            }
-    
-            .footer-icons {
-                display: flex;
-                gap: 12px;
-            }
-    
-            .footer-icons a,
-            .footer-links a {
-                color: #8b949e;
-                text-decoration: none;
-            }
-    
-            .footer-icons a:hover,
-            .footer-links a:hover {
-                color: #ffffff;
-            }
-    
-            .footer-container span {
-                color: #8b949e;
-            }
-    
-            @media (max-width: 768px) {
-                .footer-container {
-                    flex-wrap: wrap;
-                    gap: 16px; /* Menor espaçamento para telas pequenas */
-                    text-align: center;
-                }
-    
-                .footer-links, .footer-icons {
-                    justify-content: center;
-                }
-            }
-        </style>
-    
-        <div class="footer-container">
-            <!-- Links -->
-            <div class="footer-links">
-                <a href="assets/pages/politicadeprivacidade.html" target="_blank">Política de Privacidade</a>
-                <a href="assets/pages/termosdeuso.html" target="_blank">Termos de Uso</a>
-                <a href="mailto:ryanzera.dev@gmail.com">Contato</a>
-            </div>
-    
-            <!-- Ícones -->
-            <div class="footer-icons">
-                <a href="https://www.instagram.com/euoryan/" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://github.com/euoryan" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/euoryan/" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-    
-            <!-- Direitos autorais -->
-            <div class="footer-rights">
-                <span>© 2024 Ryan - Todos os direitos reservados.</span>
-            </div>
-        </div>
-    </footer>
+        
+            // Chamar a função para carregar o footer
+            loadFooter();
+        });
+    </script>
 </body>
 </html>

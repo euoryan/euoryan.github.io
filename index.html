@@ -214,68 +214,68 @@
             });
         </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // URL do footer no GitHub Raw
-        const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/main/assets/pages/footer.html';
-    
-        // Função para carregar o footer
-        function loadFooter() {
-            fetch(footerUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao carregar o footer');
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    // Criar um container para o footer
-                    const footerContainer = document.createElement('div');
-                    footerContainer.innerHTML = html.trim();
-    
-                    // Pegar o footer do HTML carregado
-                    const newFooter = footerContainer.querySelector('footer');
-    
-                    if (newFooter) {
-                        // Substituir o footer existente
-                        const existingFooter = document.querySelector('footer');
-                        if (existingFooter) {
-                            existingFooter.parentNode.replaceChild(newFooter, existingFooter);
-                        } else {
-                            // Se não existir footer, adicionar ao final do body
-                            document.body.appendChild(newFooter);
-                        }
-                    } else {
-                        throw new Error('Nenhum footer encontrado');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar o footer:', error);
-                    
-                    // Criar footer de fallback
-                    const fallbackFooter = document.createElement('footer');
-                    fallbackFooter.className = 'footer';
-                    fallbackFooter.innerHTML = `
-                        <div class="footer-container">
-                            <div class="footer-rights">
-                                <span>© 2024 por Ryan</span>
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Substituir ou adicionar footer de fallback
-                    const existingFooter = document.querySelector('footer');
-                    if (existingFooter) {
-                        existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
-                    } else {
-                        document.body.appendChild(fallbackFooter);
-                    }
-                });
-        }
-    
-        // Chamar a função para carregar o footer
-        loadFooter();
-    });
-    </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // URL do footer no GitHub Raw
+                const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/main/assets/pages/footer.html';
+            
+                // Função para carregar o footer
+                function loadFooter() {
+                    fetch(footerUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Erro ao carregar o footer');
+                            }
+                            return response.text();
+                        })
+                        .then(html => {
+                            // Criar um container para o footer
+                            const footerContainer = document.createElement('div');
+                            footerContainer.innerHTML = html.trim();
+            
+                            // Pegar o footer do HTML carregado
+                            const newFooter = footerContainer.querySelector('footer');
+            
+                            if (newFooter) {
+                                // Substituir o footer existente
+                                const existingFooter = document.querySelector('footer');
+                                if (existingFooter) {
+                                    existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                                } else {
+                                    // Se não existir footer, adicionar ao final do body
+                                    document.body.appendChild(newFooter);
+                                }
+                            } else {
+                                throw new Error('Nenhum footer encontrado');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erro ao carregar o footer:', error);
+                            
+                            // Criar footer de fallback
+                            const fallbackFooter = document.createElement('footer');
+                            fallbackFooter.className = 'footer';
+                            fallbackFooter.innerHTML = `
+                                <div class="footer-container">
+                                    <div class="footer-rights">
+                                        <span>© 2024 por Ryan</span>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            // Substituir ou adicionar footer de fallback
+                            const existingFooter = document.querySelector('footer');
+                            if (existingFooter) {
+                                existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                            } else {
+                                document.body.appendChild(fallbackFooter);
+                            }
+                        });
+                }
+            
+                // Chamar a função para carregar o footer
+                loadFooter();
+            });
+        </script>
     </body>
 </html>
