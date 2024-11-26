@@ -155,65 +155,6 @@
             </div>
         </section>
     
- <!-- Contêiner para o footer -->
- <div id="footer"></div>
-
- <a href="#" class="back-to-top">
-     <i class="fas fa-arrow-up"></i>
- </a>
-
- <button class="scroll-indicator" aria-label="Rolar para projetos">
-     <i class="fas fa-chevron-down"></i>
- </button>
-
- <script src="script.js"></script>
- <script>
-     document.addEventListener('DOMContentLoaded', function () {
-         const backToTopButton = document.querySelector('.back-to-top');
-         const scrollIndicator = document.querySelector('.scroll-indicator');
-         
-         // Mostrar/ocultar botão baseado no scroll
-         window.addEventListener('scroll', function () {
-             if (window.scrollY > 300) {
-                 backToTopButton.classList.add('visible');
-                 scrollIndicator.style.display = 'none';
-             } else {
-                 backToTopButton.classList.remove('visible');
-                 scrollIndicator.style.display = 'flex';
-             }
-         });
-
-         // Scroll suave ao topo
-         backToTopButton.addEventListener('click', function (e) {
-             e.preventDefault();
-             window.scrollTo({
-                 top: 0,
-                 behavior: 'smooth'
-             });
-         });
-
-         // Scroll suave para o indicador de scroll
-         scrollIndicator.addEventListener('click', function (e) {
-             e.preventDefault();
-             const projectsSection = document.querySelector('#projetos');
-             projectsSection.scrollIntoView({
-                 behavior: 'smooth'
-             });
-         });
-
-         // Carregar footer dinamicamente
-         fetch('assets/pages/footer.html')
-             .then(response => {
-                 if (!response.ok) throw new Error('Erro ao carregar o footer.');
-                 return response.text();
-             })
-             .then(html => {
-                 document.getElementById('footer').innerHTML = html;
-             })
-             .catch(error => console.error('Erro ao carregar o footer:', error));
-     });
- </script> 
-    
         <a href="#" class="back-to-top">
             <i class="fas fa-arrow-up"></i>
         </a>
@@ -272,5 +213,69 @@
                 });
             });
         </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // URL do footer no GitHub Raw
+        const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/main/assets/pages/footer.html';
+    
+        // Função para carregar o footer
+        function loadFooter() {
+            fetch(footerUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar o footer');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // Criar um container para o footer
+                    const footerContainer = document.createElement('div');
+                    footerContainer.innerHTML = html.trim();
+    
+                    // Pegar o footer do HTML carregado
+                    const newFooter = footerContainer.querySelector('footer');
+    
+                    if (newFooter) {
+                        // Substituir o footer existente
+                        const existingFooter = document.querySelector('footer');
+                        if (existingFooter) {
+                            existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                        } else {
+                            // Se não existir footer, adicionar ao final do body
+                            document.body.appendChild(newFooter);
+                        }
+                    } else {
+                        throw new Error('Nenhum footer encontrado');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o footer:', error);
+                    
+                    // Criar footer de fallback
+                    const fallbackFooter = document.createElement('footer');
+                    fallbackFooter.className = 'footer';
+                    fallbackFooter.innerHTML = `
+                        <div class="footer-container">
+                            <div class="footer-rights">
+                                <span>© 2024 por Ryan</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Substituir ou adicionar footer de fallback
+                    const existingFooter = document.querySelector('footer');
+                    if (existingFooter) {
+                        existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                    } else {
+                        document.body.appendChild(fallbackFooter);
+                    }
+                });
+        }
+    
+        // Chamar a função para carregar o footer
+        loadFooter();
+    });
+    </script>
     </body>
 </html>
