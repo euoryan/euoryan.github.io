@@ -2,20 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
 }
 
 :root {
-    --accent-color: #ff3333;
-    --text-color: #333;
-    --bg-color: #0a0a0a;
-    --card-bg: #111111;
-    --hover-bg: #1a1a1a;
+    --accent-color: #dc3545;
+    --text-color: #c9d1d9;
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --hover-bg: #21262d;
+    --border-color: #30363d;
 }
 
 body {
-    color: #fff;
-    background: linear-gradient(165deg, var(--bg-color) 60%, #1a0808 100%) fixed;
+    color: var(--text-color);
+    background: linear-gradient(165deg, var(--bg-color) 60%, #0d1117 100%) fixed;
     line-height: 1.6;
     min-height: 100vh;
     overflow-y: scroll;
@@ -33,9 +34,9 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.98);
+    background: rgba(22, 27, 34, 0.98);
     padding: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
 }
 
@@ -50,7 +51,7 @@ nav {
 .logo {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -72,7 +73,7 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #fff;
+    color: var(--text-color);
     font-weight: 500;
     font-size: 0.9rem;
     position: relative;
@@ -147,17 +148,7 @@ nav {
     font-size: 1.1rem;
     max-width: 500px;
     margin-bottom: 2rem;
-    color: #999;
-}
-
-/* Code Icon Animation */
-.code-icon {
-    font-size: 2.5rem;
-    transform-origin: center;
-    animation: driveBy 3s infinite;
-    position: relative;
-    display: inline-block;
-    margin-left: 10px;
+    color: #8b949e;
 }
 
 .road-reflection {
@@ -179,7 +170,7 @@ nav {
     top: 50%;
     transform: translateY(-50%);
     font-size: 15rem;
-    color: rgba(255, 255, 255, 0.03);
+    color: rgba(201, 209, 217, 0.03);
     z-index: 0;
     font-family: serif;
     user-select: none;
@@ -194,11 +185,11 @@ nav {
 
 .btn {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
+    padding: 0.60rem 1.5rem;
     background: var(--card-bg);
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     font-size: 0.9rem;
     font-weight: 500;
@@ -208,16 +199,16 @@ nav {
 
 .btn:hover {
     background: var(--hover-bg);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--text-color);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
     position: fixed;
-    bottom: 2rem;  /* Adjusted to be slightly higher */
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;  /* Increased z-index */
+    z-index: 10;
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -231,7 +222,7 @@ nav {
 
 .scroll-indicator i {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(201, 209, 217, 0.7);
     animation: bounce 2s infinite;
 }
 
@@ -246,7 +237,7 @@ nav {
     bottom: 20px;
     right: 20px;
     background: var(--card-bg);
-    color: white;
+    color: var(--text-color);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -259,7 +250,7 @@ nav {
     transition: all 0.3s ease;
     z-index: 1000;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .back-to-top.visible {
@@ -269,7 +260,7 @@ nav {
 
 .back-to-top:hover {
     background: var(--hover-bg);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--text-color);
     transform: translateY(-3px);
 }
 
@@ -281,7 +272,7 @@ section {
 }
 
 #projetos, #skills {
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(13, 17, 23, 0.8);
 }
 
 .section-content {
@@ -308,7 +299,7 @@ section {
     background: var(--card-bg);
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     transition: transform 0.3s ease, background-color 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -359,7 +350,7 @@ section {
 }
 
 .project-description {
-    color: #999;
+    color: #8b949e;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
@@ -372,11 +363,11 @@ section {
 }
 
 .tag {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(201, 209, 217, 0.1);
     padding: 0.25rem 0.75rem;
     border-radius: 3px;
     font-size: 0.8rem;
-    color: #999;
+    color: #8b949e;
 }
 
 /* Skills Grid */
@@ -392,7 +383,7 @@ section {
     padding: 1.5rem;
     border-radius: 4px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     transition: background-color 0.2s ease;
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -410,11 +401,11 @@ section {
 
 /* Footer */
 footer {
-    background: rgba(10, 10, 10, 0.8);
-    color: white;
+    background: rgba(13, 17, 23, 0.8);
+    color: var(--text-color);
     padding: 3rem 1.5rem;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
     position: relative;
     z-index: 1;
 }
@@ -427,7 +418,7 @@ footer {
 }
 
 .social-links a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 1.5rem;
     opacity: 0.8;
@@ -489,67 +480,41 @@ footer {
 
 .code-icon {
     font-size: 2.5rem;
-    transform-origin: center;
-    animation: driveBy 3s infinite;
-    position: relative;
     display: inline-block;
+    position: relative;
+    animation: codeFlow 3s infinite ease-in-out;
+    transform-origin: center;
     margin-left: 10px;
 }
 
+.code-icon::before {
+    content: '❮/❯';
+    display: inline-block;
+}
+
 .road-reflection {
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, rgba(33, 109, 222, 0.3), transparent);
-    filter: blur(1px);
-    animation: reflection 3s infinite;
+    display: none; /* Remove the original road reflection */
 }
 
-@keyframes driveBy {
-    0% {
-        transform: translateX(-20px) scale(0.9);
-        opacity: 0;
+@keyframes codeFlow {
+    0%, 100% {
+        transform: translateX(0) scale(1) rotate(0deg);
+        color: #dc3545;
+        text-shadow: 0 0 5px rgb(255, 0, 0);
     }
-    20% {
-        transform: translateX(0) scale(1);
-        opacity: 1;
+    25% {
+        transform: translateX(-10px) scale(1.1) rotate(-5deg);
+        color: #ce0011;
+        text-shadow: 0 0 5px rgb(255, 0, 0);
     }
-    40% {
-        transform: translateX(0) scale(1);
-        opacity: 1;
+    50% {
+        transform: translateX(10px) scale(0.9) rotate(5deg);
+        color: #dc3545;
+        text-shadow: 0 0 5px rgb(255, 0, 0);
     }
-    60% {
-        transform: translateX(0) scale(1) rotateY(0deg);
-        opacity: 1;
-    }
-    80% {
-        transform: translateX(20px) scale(0.9) rotateY(180deg);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateX(-20px) scale(0.9) rotateY(0deg);
-        opacity: 0;
-    }
-}
-
-@keyframes reflection {
-    0% {
-        opacity: 0;
-        transform: translateX(-70%);
-    }
-    20% {
-        opacity: 0.5;
-        transform: translateX(-50%);
-    }
-    80% {
-        opacity: 0.5;
-        transform: translateX(-30%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-70%);
+    75% {
+        transform: translateX(-5px) scale(1.05) rotate(-3deg);
+        color: #ce0011;
+        text-shadow: 0 0 5px rgb(255, 0, 0);
     }
 }
