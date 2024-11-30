@@ -590,34 +590,68 @@ footer {
     margin-left: 10px;
 }
 
+.code-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    margin-left: 10px;
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    color: var(--accent-color);
+}
+
 .code-icon::before {
     content: '❮/❯';
     display: inline-block;
+    position: relative;
+    animation: codeReveal 2s infinite alternate;
+    transform-origin: center;
 }
 
-.road-reflection {
-    display: none; /* Remove the original road reflection */
-}
-
-@keyframes codeFlow {
-    0%, 100% {
-        transform: translateX(0) scale(1) rotate(0deg);
-        color: #dc3545;
-        text-shadow: 0 0 5px rgb(255, 0, 0);
-    }
-    25% {
-        transform: translateX(-10px) scale(1.1) rotate(-5deg);
-        color: #ce0011;
-        text-shadow: 0 0 5px rgb(255, 0, 0);
+@keyframes codeReveal {
+    0% {
+        transform: 
+            rotateX(-15deg) 
+            rotateY(10deg) 
+            translateZ(-20px) 
+            scale(0.9);
+        opacity: 0.6;
+        text-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
     }
     50% {
-        transform: translateX(10px) scale(0.9) rotate(5deg);
-        color: #dc3545;
-        text-shadow: 0 0 5px rgb(255, 0, 0);
+        transform: 
+            rotateX(0deg) 
+            rotateY(0deg) 
+            translateZ(0) 
+            scale(1);
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(220, 53, 69, 0.5);
     }
-    75% {
-        transform: translateX(-5px) scale(1.05) rotate(-3deg);
-        color: #ce0011;
-        text-shadow: 0 0 5px rgb(255, 0, 0);
+    100% {
+        transform: 
+            rotateX(15deg) 
+            rotateY(-10deg) 
+            translateZ(-20px) 
+            scale(0.9);
+        opacity: 0.6;
+        text-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
+    }
+}
+
+.code-icon:hover::before {
+    animation-play-state: paused;
+    transform: 
+        rotateX(0deg) 
+        rotateY(0deg) 
+        translateZ(10px) 
+        scale(1.1);
+    text-shadow: 0 0 20px rgba(220, 53, 69, 0.7);
+}
+
+@media (max-width: 768px) {
+    .code-icon {
+        font-size: 2rem;
+        margin-left: 5px;
     }
 }
