@@ -1,0 +1,1 @@
+pyinstaller --onefile --windowed --icon="C:/Users/Ryan/" --name="configsize" --add-data "C:/Users/Ryan" --noconfirm --clean configsize.py
