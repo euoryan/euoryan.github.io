@@ -1,1 +1,1 @@
-pyinstaller --onefile --windowed --icon="C:/Users/Ryan/" --name="configsize" --add-data "C:/Users/Ryan" --noconfirm --clean configsize.py
+python -m PyInstaller --onefile --windowed --icon="C:\Users\Ryan W11\Documents\MEGA\Code\git codes\euoryan.github.io\assets\images\favicon\euoryan.png" configsize.py
