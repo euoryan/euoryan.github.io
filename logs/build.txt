@@ -1,1 +1,0 @@
-[full_path_to_scripts]\pyinstaller.exe --onefile --windowed --icon="C:\Users\Ryan W11\Documents\MEGA\Code\git codes\euoryan.github.io\assets\images\favicon\euoryan.png" "C:\Users\Ryan W11\Documents\MEGA\Code\git codes\euoryan.github.io\logs\configsize.py"
