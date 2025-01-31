@@ -80,3 +80,65 @@ document.querySelectorAll('.nav-links a, .scroll-indicator').forEach(link => {
 // Usar passive true para melhor performance em touch events
 window.addEventListener('load', updateActiveLink, { passive: true });
 window.addEventListener('resize', throttle(updateActiveLink), { passive: true });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.project-card');
+    const projectsGrid = document.querySelector('.projects-grid');
+    const PROJECTS_PER_PAGE = 6;
+    
+    // Se houver mais de 6 projetos
+    if (projectCards.length > PROJECTS_PER_PAGE) {
+        // Ocultar projetos extras inicialmente
+        projectCards.forEach((card, index) => {
+            if (index >= PROJECTS_PER_PAGE) {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Criar o botão toggle
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'btn';
+        toggleButton.textContent = 'Mostrar mais';
+        toggleButton.style.cssText = `
+            display: block;
+            margin: 2rem auto 0;
+        `;
+        
+        // Estado para controlar se os projetos estão expandidos
+        let isExpanded = false;
+        
+        // Adicionar funcionalidade ao botão
+        toggleButton.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            
+            projectCards.forEach((card, index) => {
+                if (index >= PROJECTS_PER_PAGE) {
+                    card.style.display = isExpanded ? 'block' : 'none';
+                    
+                    // Adicionar animação suave
+                    if (isExpanded) {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    }
+                }
+            });
+            
+            // Atualizar texto do botão
+            this.textContent = isExpanded ? 'Mostrar menos' : 'Mostrar mais';
+            
+            // Role suavemente até o último projeto visível se estiver recolhendo
+            if (!isExpanded) {
+                const lastVisibleProject = projectCards[PROJECTS_PER_PAGE - 1];
+                lastVisibleProject.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+        
+        // Adicionar o botão após a grid de projetos
+        projectsGrid.parentNode.insertBefore(toggleButton, projectsGrid.nextSibling);
+    }
+});
