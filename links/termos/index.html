@@ -206,7 +206,7 @@
             <p>Estes termos e condições são regidos e interpretados de acordo com as leis da jurisdição de Eu o Ryan, e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais nesse estado ou localidade.</p>
         </div>
 
-        <a class="btn" onclick="window.history.back()" style="cursor: pointer">
+        <a class="btn" onclick="if(window.history.length > 1) { window.history.back(); } else { window.location.href = 'https://euoryan.com'; }" style="cursor: pointer">
             <i class="fas fa-arrow-left"></i>
             Voltar
         </a>

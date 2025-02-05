@@ -207,7 +207,7 @@
             </ul>
         </div>
 
-        <a class="btn" onclick="window.history.back()" style="cursor: pointer">
+        <a class="btn" onclick="if(window.history.length > 1) { window.history.back(); } else { window.location.href = 'https://euoryan.com'; }" style="cursor: pointer">
             <i class="fas fa-arrow-left"></i>
             Voltar
         </a>
