@@ -30,13 +30,17 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="watermark">さ</div>
-                <h1>Olá, prazer,<br><span>eu sou o <span class="name">Ryan! <i class="fa-solid fa-code code-icon">
-                    <div class="road-reflection"></div>
-                </i></span></span></h1>
-                <p>Desenvolvedor Full Stack focado em extensões web, sites modernos e aplicações Python.</p>
+                <h1 style="line-height: 1.2;">
+                    <span class="txt-rotate" data-period="2000" data-rotate='[ "Code.", "Debug.", "Build.", "Deploy.", "Develop." ]'></span>
+                    <span>Sou <span class="name">Ryan! <i class="fa-solid fa-code code-icon">
+                        <div class="road-reflection"></div>
+                    </i></span></span>
+                </h1>
+                <p>Apaixonado por criar soluções digitais inovadoras.</p>
                 <a href="#projetos" class="btn">Ver Projetos</a>
             </div>
         </section>
+        
 
         <section id="projetos">
             <div class="section-content">
@@ -277,5 +281,59 @@
                 loadFooter();
             });
         </script>
+
+<script>
+    var TxtRotate = function(el, toRotate, period) {
+      this.toRotate = toRotate;
+      this.el = el;
+      this.loopNum = 0;
+      this.period = parseInt(period, 10) || 2000;
+      this.txt = '';
+      this.tick();
+      this.isDeleting = false;
+    };
+    
+    TxtRotate.prototype.tick = function() {
+      var i = this.loopNum % this.toRotate.length;
+      var fullTxt = this.toRotate[i];
+    
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+    
+      this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    
+      var that = this;
+      var delta = 200 - Math.random() * 100;
+    
+      if (this.isDeleting) { delta /= 2; }
+    
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+    
+      setTimeout(function() {
+        that.tick();
+      }, delta);
+    };
+    
+    window.onload = function() {
+      var elements = document.getElementsByClassName('txt-rotate');
+      for (var i=0; i<elements.length; i++) {
+        var toRotate = elements[i].getAttribute('data-rotate');
+        var period = elements[i].getAttribute('data-period');
+        if (toRotate) {
+          new TxtRotate(elements[i], JSON.parse(toRotate), period);
+        }
+      }
+    };
+    </script>
     </body>
 </html>
