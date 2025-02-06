@@ -366,6 +366,10 @@ section {
     z-index: 1;
 }
 
+#projetos {
+    scroll-margin-top: 80px;
+}
+
 #projetos, #skills {
     background: rgba(13, 17, 23, 0.8);
 }
@@ -577,6 +581,7 @@ footer {
 
     section {
         padding: 3rem 1rem;
+        scroll-margin-top: 80px;
     }
 
     .project-image {
