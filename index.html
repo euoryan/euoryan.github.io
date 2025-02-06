@@ -142,22 +142,22 @@
                 <div class="skills-grid">
                     <div class="skill-card">
                         <i class="fas fa-code skill-icon"></i>
-                        <h3>Frontend</h3>
-                        <p>React, Vue.js, TypeScript</p>
+                        <h3>Desenvolvimento Web</h3>
+                        <p>Criação de sites, sistemas e aplicações</p>
                     </div>
                     <div class="skill-card">
-                        <i class="fas fa-server skill-icon"></i>
-                        <h3>Backend</h3>
-                        <p>Node.js, Express, MongoDB</p>
+                        <i class="fa-brands fa-stack-overflow skill-icon"></i>
+                        <h3>Automação & Bots</h3>
+                        <p>Extensões, web scraping e scripts inteligentes</p>
                     </div>
                     <div class="skill-card">
-                        <i class="fas fa-paint-brush skill-icon"></i>
-                        <h3>Design</h3>
-                        <p>UI/UX, Figma, Design Systems</p>
+                        <i class="fa-solid fa-pen-nib skill-icon"></i>
+                        <h3>Design & Interfaces</h3>
+                        <p>UI/UX, prototipação e identidade visual</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>               
     
         <a href="#" class="back-to-top">
             <i class="fas fa-arrow-up"></i>
@@ -176,7 +176,7 @@
                 // Mostrar/ocultar botão baseado no scroll
                 window.addEventListener('scroll', function() {
                     // Altera a lógica para mostrar/esconder o indicador de scroll
-                    if (window.scrollY > 300) {
+                    if (window.scrollY > 100) { // Mudando de 300 para 100
                         backToTopButton.classList.add('visible');
                         scrollIndicator.style.display = 'none';
                     } else {
@@ -233,20 +233,20 @@
                             return response.text();
                         })
                         .then(html => {
-                            // Criar um container para o footer
                             const footerContainer = document.createElement('div');
                             footerContainer.innerHTML = html.trim();
-            
-                            // Pegar o footer do HTML carregado
+
                             const newFooter = footerContainer.querySelector('footer');
-            
+                            
                             if (newFooter) {
+                                // Adicionar o id ao footer carregado
+                                newFooter.id = 'contato';
+                                
                                 // Substituir o footer existente
                                 const existingFooter = document.querySelector('footer');
                                 if (existingFooter) {
                                     existingFooter.parentNode.replaceChild(newFooter, existingFooter);
                                 } else {
-                                    // Se não existir footer, adicionar ao final do body
                                     document.body.appendChild(newFooter);
                                 }
                             } else {
@@ -259,6 +259,7 @@
                             // Criar footer de fallback
                             const fallbackFooter = document.createElement('footer');
                             fallbackFooter.className = 'footer';
+                            fallbackFooter.id = 'contato'; // Adicionar id aqui também
                             fallbackFooter.innerHTML = `
                                 <div class="footer-container">
                                     <div class="footer-rights">
@@ -267,7 +268,6 @@
                                 </div>
                             `;
                             
-                            // Substituir ou adicionar footer de fallback
                             const existingFooter = document.querySelector('footer');
                             if (existingFooter) {
                                 existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
@@ -277,7 +277,6 @@
                         });
                 }
             
-                // Chamar a função para carregar o footer
                 loadFooter();
             });
         </script>
