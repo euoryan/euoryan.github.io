@@ -390,7 +390,7 @@ section {
 .section-content {
     max-width: var(--max-content-width);
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0rem;
 }
 
 .section-title {
@@ -405,7 +405,7 @@ section {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
-    padding: 0.5rem;
+    padding: 0rem;
 }
 
 .project-card {
