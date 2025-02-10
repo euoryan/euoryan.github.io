@@ -338,29 +338,29 @@
                 const { gamma } = event;
                 
                 // Reduce unnecessary updates
-                if (Math.abs(gamma - lastGamma) < 1) return;
+                if (Math.abs(gamma - lastGamma) < 0.5) return;
                 lastGamma = gamma;
                 
                 requestAnimationFrame(() => {
                     cards.forEach(card => {
-                        // Even tighter rotation control
-                        const clampedGamma = Math.max(Math.min(gamma, 10), -10);
+                        // Increased rotation range
+                        const clampedGamma = Math.max(Math.min(gamma, 25), -25);
                         
                         card.style.transition = 'transform 0.1s ease-out';
                         card.style.transform = `
                             perspective(1000px) 
-                            rotateY(${clampedGamma * 0.6}deg) 
-                            translateZ(5px)
+                            rotateY(${clampedGamma * 0.8}deg) 
+                            translateZ(15px)
                         `;
                         
-                        // More subtle gradient effect
-                        card.style.setProperty('--mouse-x', `${(clampedGamma + 10) / 20 * 100}%`);
+                        // More dynamic gradient effect
+                        card.style.setProperty('--mouse-x', `${(clampedGamma + 25) / 50 * 100}%`);
                         card.style.setProperty('--mouse-y', '50%');
                     });
                 });
             }
             
-            // Optimized permission handling
+            // Permission handling remains the same as previous version
             if (window.DeviceOrientationEvent) {
                 if (typeof DeviceOrientationEvent.requestPermission === 'function') {
                     const permissionBtn = document.createElement('button');
