@@ -633,6 +633,7 @@ footer {
 
 
 .txt-rotate {
+    color: var(--accent-color); /* This will make the rotating text red */
     min-width: 150px;
     display: inline-block;
 }
