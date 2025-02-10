@@ -270,8 +270,7 @@ nav {
 }
 
 .text-gray {
-    color: #C9D1D9;
-    /* Adjust to match your design's gray */
+    color: #C9D1D9; /* Adjust to match your design's gray */
 }
 
 .text-accent {
@@ -453,9 +452,11 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(220, 53, 69, 0.2),
-            transparent 50%);
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        rgba(220, 53, 69, 0.2), 
+        transparent 50%
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -632,8 +633,7 @@ footer {
 
 
 .txt-rotate {
-    color: #c0c0c0;
-    /* This will make the rotating text red */
+    color: #c0c0c0; /* This will make the rotating text red */
     min-width: 150px;
     display: inline-block;
 }
@@ -653,9 +653,9 @@ h1 {
 .contact-cta {
     text-align: center;
     margin-top: 3rem;
-}
-
-.btn-cta {
+ }
+ 
+ .btn-cta {
     display: inline-block;
     padding: 1rem 2.5rem;
     background: var(--card-bg);
@@ -667,39 +667,41 @@ h1 {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-}
-
-.btn-cta::before {
+ }
+ 
+ .btn-cta::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(220, 53, 69, 0.2),
-            transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(220, 53, 69, 0.2),
+        transparent
+    );
     transition: 0.5s;
-}
-
-.btn-cta:hover::before {
+ }
+ 
+ .btn-cta:hover::before {
     left: 100%;
-}
-
-.btn-cta:hover {
+ }
+ 
+ .btn-cta:hover {
     background: var(--hover-bg);
     border-color: var(--accent-color);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(220, 53, 69, 0.2);
-}
-
-.btn-cta i {
+ }
+ 
+ .btn-cta i {
     margin-right: 8px;
     color: var(--accent-color);
-}
+ }
 
-.whatsapp-top {
+ .whatsapp-top {
     position: fixed;
     bottom: 75px;
     right: 20px;
