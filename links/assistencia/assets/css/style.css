@@ -31,7 +31,7 @@ body {
     }
 }
 
-/* Navigation - Enhanced Mobile Menu */
+/* Navigation */
 nav {
     position: fixed;
     top: 0;
@@ -66,16 +66,13 @@ nav {
     color: var(--accent-color);
 }
 
-/* Hamburger Menu - Modern Style */
 .nav-toggle {
     display: none;
     width: 30px;
     height: 20px;
     position: relative;
     cursor: pointer;
-    z-index: 1001;
-    transform: rotate(0deg);
-    transition: 0.5s ease-in-out;
+    z-index: 1002;
 }
 
 .nav-toggle span {
@@ -91,17 +88,9 @@ nav {
     transition: 0.25s ease-in-out;
 }
 
-.nav-toggle span:nth-child(1) {
-    top: 0px;
-}
-
-.nav-toggle span:nth-child(2) {
-    top: 10px;
-}
-
-.nav-toggle span:nth-child(3) {
-    top: 20px;
-}
+.nav-toggle span:nth-child(1) { top: 0px; }
+.nav-toggle span:nth-child(2) { top: 10px; }
+.nav-toggle span:nth-child(3) { top: 20px; }
 
 .nav-toggle.open span:nth-child(1) {
     top: 10px;
@@ -146,65 +135,6 @@ nav {
 .nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
-}
-
-/* Mobile Navigation Overlay */
-.mobile-nav-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--mobile-nav-bg);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.mobile-nav-overlay.open {
-    opacity: 1;
-    visibility: visible;
-}
-
-.mobile-nav-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 2rem;
-}
-
-.mobile-nav-content a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-.mobile-nav-overlay.open .mobile-nav-content a {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-nav-overlay.open .mobile-nav-content a:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.mobile-nav-overlay.open .mobile-nav-content a:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.mobile-nav-overlay.open .mobile-nav-content a:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.mobile-nav-overlay.open .mobile-nav-content a:nth-child(4) {
-    transition-delay: 0.4s;
 }
 
 /* Hero Section */
@@ -281,15 +211,10 @@ nav {
 @media (max-width: 768px) {
     .watermark {
         display: none;
-        /* Oculta em telas menores que 768px */
     }
 }
 
-/* Buttons and Common Elements */
-.accent {
-    color: var(--accent-color);
-}
-
+/* Buttons */
 .btn {
     display: inline-block;
     padding: 0.60rem 1.5rem;
@@ -399,30 +324,32 @@ section {
     text-align: center;
 }
 
-/* Estilização melhorada para a seção de serviços */
+/* Services Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
     padding: 0.5rem;
+    perspective: 1000px;
 }
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    position: relative;
     height: 100%;
     cursor: pointer;
-    position: relative;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    transform: rotateX(10deg) translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     border-color: var(--accent-color);
 }
 
@@ -435,11 +362,14 @@ section {
     height: 4px;
     background: var(--accent-color);
     transform: scaleX(0);
+    transform-origin: right;
     transition: transform 0.3s ease;
+    z-index: 1;
 }
 
 .project-card:hover::before {
     transform: scaleX(1);
+    transform-origin: left;
 }
 
 .project-content {
@@ -448,6 +378,8 @@ section {
     flex-direction: column;
     gap: 1rem;
     height: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .project-title {
@@ -457,17 +389,20 @@ section {
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
 }
 
 .project-title i {
     color: var(--accent-color);
     font-size: 1.5rem;
+    background: rgba(220, 53, 69, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    margin-right: 15px;
     transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-title i {
-    transform: scale(1.1) rotate(-5deg);
+    transform: rotate(360deg);
 }
 
 .project-description {
@@ -501,72 +436,6 @@ section {
     border-color: rgba(220, 53, 69, 0.3);
 }
 
-/* Animação de entrada para os cards */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.project-card {
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 0;
-}
-
-/* Delay para cada card */
-.project-card:nth-child(1) { animation-delay: 0.1s; }
-.project-card:nth-child(2) { animation-delay: 0.2s; }
-.project-card:nth-child(3) { animation-delay: 0.3s; }
-.project-card:nth-child(4) { animation-delay: 0.4s; }
-.project-card:nth-child(5) { animation-delay: 0.5s; }
-.project-card:nth-child(6) { animation-delay: 0.6s; }
-
-/* Responsividade aprimorada */
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-        padding: 0.25rem;
-    }
-
-    .project-title {
-        font-size: 1.2rem;
-    }
-
-    .project-description {
-        font-size: 0.9rem;
-    }
-}
-
-/* Efeito de brilho ao passar o mouse */
-.project-card::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.03),
-        transparent
-    );
-    transform: rotate(45deg);
-    transition: 0.6s;
-    opacity: 0;
-}
-
-.project-card:hover::after {
-    opacity: 1;
-    transform: rotate(45deg) translate(50%, 50%);
-}
-
 /* Skills Grid */
 .skills-grid {
     display: grid;
@@ -582,8 +451,6 @@ section {
     text-align: center;
     border: 1px solid var(--border-color);
     transition: background-color 0.2s ease;
-    transform: translateZ(0);
-    backface-visibility: hidden;
 }
 
 .skill-card:hover {
@@ -607,106 +474,116 @@ footer {
     z-index: 1;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.social-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.5rem;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-}
-
-.social-links a:hover {
-    opacity: 1;
-}
-
-.code-icon {
-    font-size: 2.5rem;
-    display: inline-block;
-    position: relative;
-    animation:
-        codeRotate 5s ease-in-out infinite;
-    transform-origin: center;
-    margin-left: 10px;
-    perspective: 1000px;
-}
-
-.code-icon::before {
-    content: '❮/❯';
-    display: inline-block;
-    position: relative;
-    transform-origin: center;
-}
-
-@keyframes codeRotate {
-
-    0%,
-    100% {
-        transform: rotateY(0deg);
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    50% {
-        transform: rotateY(180deg);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+.project-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
     .nav-toggle {
         display: block;
+        z-index: 1002;
     }
 
     .nav-links {
         display: none;
-        position: absolute;
-        top: 60px;
+        position: fixed;
+        top: 0;
         left: 0;
         width: 100%;
-        background-color: var(--card-bg);
-        padding: 1rem;
+        height: 100%;
+        background: var(--mobile-nav-bg);
         flex-direction: column;
-        gap: 1rem;
-        z-index: 999;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        gap: 2rem;
     }
 
     .nav-links.show {
         display: flex;
     }
 
-    section {
-        padding: 3rem 1rem;
-        scroll-margin-top: 80px;
+    .nav-links a {
+        font-size: 1.5rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
     }
 
-    .project-image {
-        height: 180px;
+    .nav-links.show a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links.show a:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.show a:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links.show a:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links.show a:nth-child(4) { transition-delay: 0.4s; }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
     }
 }
 
-
+/* Text Rotation Styles */
 .txt-rotate {
     min-width: 150px;
     display: inline-block;
 }
 
-.txt-rotate>.wrap {
+.txt-rotate > .wrap {
     border-right: 0.08em solid #666;
+    animation: blink 0.7s infinite;
 }
 
-h1 {
-    margin-bottom: 0.5rem;
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #666; }
 }
 
-.hero-content {
-    gap: 1rem;
+/* Code Icon Animation */
+.code-icon {
+    display: inline-block;
+    animation: codeRotate 5s ease-in-out infinite;
+    transform-origin: center;
+    perspective: 1000px;
+}
+
+@keyframes codeRotate {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
 }
