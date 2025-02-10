@@ -16,7 +16,7 @@
 <body>
     <nav>
         <div class="nav-content">
-            <a href="#" class="logo">euo<span>ryan</span></a>
+            <a href="#" class="logo">euo<span>ryann</span></a>
             <div class="nav-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -333,31 +333,27 @@
     document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.project-card');
     
-    // Enhanced device orientation handler
     function handleOrientation(event) {
-        const { beta, gamma } = event; // Device tilt angles
+        const { gamma } = event; // Only use side-to-side tilt
         
         cards.forEach(card => {
-            // More aggressive and responsive rotation
-            const rotateX = beta * 0.5;  // Forward/backward tilt
-            const rotateY = gamma * 0.5; // Side-to-side tilt
+            // Limit rotation and movement
+            const clampedGamma = Math.max(Math.min(gamma, 15), -15);
             
             card.style.transform = `
                 perspective(1000px) 
-                rotateX(${-rotateX}deg) 
-                rotateY(${rotateY}deg) 
-                translateZ(20px)
+                rotateY(${clampedGamma * 0.8}deg) 
+                translateZ(10px)
             `;
             
-            // Dynamic background effect based on tilt
-            card.style.setProperty('--mouse-x', `${(gamma + 90) / 180 * 100}%`);
-            card.style.setProperty('--mouse-y', `${(beta + 90) / 180 * 100}%`);
+            // Subtle radial gradient effect based on tilt
+            card.style.setProperty('--mouse-x', `${(clampedGamma + 15) / 30 * 100}%`);
+            card.style.setProperty('--mouse-y', '50%');
         });
     }
     
-    // Request permission and add listeners
+    // Permission handling for iOS
     if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-        // iOS 13+ requires user interaction for permission
         const requestPermission = document.createElement('button');
         requestPermission.textContent = 'Ativar movimento do dispositivo';
         requestPermission.style.position = 'fixed';
@@ -379,7 +375,6 @@
         
         document.body.appendChild(requestPermission);
     } else {
-        // Standard browsers
         window.addEventListener('deviceorientation', handleOrientation);
     }
 });
