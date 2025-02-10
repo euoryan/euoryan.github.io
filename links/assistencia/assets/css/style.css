@@ -611,6 +611,18 @@ footer {
 @media (max-width: 1024px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;  /* Força 1 coluna no mobile */
+        gap: 1.25rem;  /* Reduz um pouco o espaçamento para melhor uso do espaço */
+    }
+
+    .project-card {
+        padding: 1.5rem;  /* Reduz um pouco o padding para melhor uso do espaço */
     }
 }
 
