@@ -8,7 +8,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>euoryan // assistência</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/images/favicon/euoryan.png">
+    <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/images/favicon/euoryan.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets\css\style.css">
 </head>
@@ -39,7 +40,7 @@
             <p>Remoção de senha, formatação e conserto. Suporte completo a um clique!</p>
             <a href="#servicos" class="btn">Ver Serviços</a>
         </div>
-     </section>
+    </section>
 
     <section id="servicos">
         <div class="section-content">
@@ -48,42 +49,48 @@
                 <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-laptop-code"></i> Formatação Profissional</h3>
-                        <p class="project-description">Formatação completa e segura de sistemas operacionais, garantindo performance e limpeza total.</p>
+                        <p class="project-description">Formatação completa e segura de sistemas operacionais, garantindo
+                            performance e limpeza total.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-lock"></i> Remoção de Senhas</h3>
-                        <p class="project-description">Desbloqueio de dispositivos e remoção de senhas de login com técnicas avançadas.</p>
+                        <p class="project-description">Desbloqueio de dispositivos e remoção de senhas de login com
+                            técnicas avançadas.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-shield-alt"></i> Segurança da Informação</h3>
-                        <p class="project-description">Criptografia de dados, proteção contra malware e análise de vulnerabilidades.</p>
+                        <p class="project-description">Criptografia de dados, proteção contra malware e análise de
+                            vulnerabilidades.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-microchip"></i> Upgrade de Hardware</h3>
-                        <p class="project-description">Melhoria de componentes, troca de peças e otimização do hardware.</p>
+                        <p class="project-description">Melhoria de componentes, troca de peças e otimização do hardware.
+                        </p>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-tachometer-alt"></i> Melhoria de Desempenho</h3>
-                        <p class="project-description">Otimização de sistemas, limpeza de arquivos temporários e ajustes de configurações.</p>
+                        <p class="project-description">Otimização de sistemas, limpeza de arquivos temporários e ajustes
+                            de configurações.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-tools"></i> TI em Geral</h3>
-                        <p class="project-description">Suporte técnico completo para todas as necessidades de tecnologia da informação.</p>
+                        <p class="project-description">Suporte técnico completo para todas as necessidades de tecnologia
+                            da informação.</p>
                     </div>
                 </div>
             </div>
@@ -293,91 +300,91 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.project-card');
-        
-        cards.forEach(card => {
-            let rafId = null;
-            
-            const handleMouseMove = (e) => {
-                if (rafId) {
-                    cancelAnimationFrame(rafId);
-                }
-                
-                rafId = requestAnimationFrame(() => {
-                    const rect = card.getBoundingClientRect();
-                    const x = ((e.clientX - rect.left) / rect.width) * 100;
-                    const y = ((e.clientY - rect.top) / rect.height) * 100;
-                    
-                    card.style.setProperty('--mouse-x', `${x}%`);
-                    card.style.setProperty('--mouse-y', `${y}%`);
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateX = -(e.clientY - rect.top - centerY) / 10;
-                    const rotateY = (e.clientX - rect.left - centerX) / 10;
-                    
-                    card.style.transform = `
+            const cards = document.querySelectorAll('.project-card');
+
+            cards.forEach(card => {
+                let rafId = null;
+
+                const handleMouseMove = (e) => {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
+
+                    rafId = requestAnimationFrame(() => {
+                        const rect = card.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+                        card.style.setProperty('--mouse-x', `${x}%`);
+                        card.style.setProperty('--mouse-y', `${y}%`);
+
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+
+                        const rotateX = -(e.clientY - rect.top - centerY) / 10;
+                        const rotateY = (e.clientX - rect.left - centerX) / 10;
+
+                        card.style.transform = `
                         perspective(1000px) 
                         rotateX(${rotateX}deg) 
                         rotateY(${rotateY}deg) 
                         translateZ(20px)
                     `;
-                });
-            };
-            
-            const handleMouseLeave = () => {
-                if (rafId) {
-                    cancelAnimationFrame(rafId);
-                }
-                
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
-            };
-            
-            card.addEventListener('mousemove', handleMouseMove);
-            card.addEventListener('mouseleave', handleMouseLeave);
+                    });
+                };
+
+                const handleMouseLeave = () => {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
+
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+                };
+
+                card.addEventListener('mousemove', handleMouseMove);
+                card.addEventListener('mouseleave', handleMouseLeave);
+            });
         });
-    });
     </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.project-card');
             let lastGamma = 0;
-            
+
             function handleOrientation(event) {
                 const { gamma } = event;
-                
+
                 // Reduce unnecessary updates
                 if (Math.abs(gamma - lastGamma) < 0.5) return;
                 lastGamma = gamma;
-                
+
                 requestAnimationFrame(() => {
                     cards.forEach(card => {
                         // Increased rotation range
                         const clampedGamma = Math.max(Math.min(gamma, 25), -25);
-                        
+
                         card.style.transition = 'transform 0.1s ease-out';
                         card.style.transform = `
                             perspective(1000px) 
                             rotateY(${clampedGamma * 0.8}deg) 
                             translateZ(15px)
                         `;
-                        
+
                         // More dynamic gradient effect
                         card.style.setProperty('--mouse-x', `${(clampedGamma + 25) / 50 * 100}%`);
                         card.style.setProperty('--mouse-y', '50%');
                     });
                 });
             }
-            
+
             // Permission handling remains the same as previous version
             if (window.DeviceOrientationEvent) {
                 if (typeof DeviceOrientationEvent.requestPermission === 'function') {
                     const permissionBtn = document.createElement('button');
                     permissionBtn.textContent = 'Ativar movimento';
                     permissionBtn.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:1000';
-                    
+
                     permissionBtn.addEventListener('click', async () => {
                         try {
                             const response = await DeviceOrientationEvent.requestPermission();
@@ -389,7 +396,7 @@
                             console.error(error);
                         }
                     });
-                    
+
                     document.body.appendChild(permissionBtn);
                 } else {
                     window.addEventListener('deviceorientation', handleOrientation, { passive: true });
@@ -397,5 +404,69 @@
             }
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sections = document.querySelectorAll('section');
+
+            function updateActiveLink() {
+                let currentSection = 'hero';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 250; // Increased offset for more precise detection
+                    const sectionHeight = section.clientHeight;
+
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.id || 'hero';
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+
+                    if (
+                        link.getAttribute('href') === `#${currentSection}` ||
+                        (currentSection === 'hero' && link.getAttribute('href') === '#')
+                    ) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Smooth scrolling with precise active link update
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Get the target element
+                    const targetId = this.getAttribute('href');
+                    const target = targetId === '#'
+                        ? document.documentElement // Scroll to top for home
+                        : document.querySelector(targetId);
+
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
+                        // Update active link with a small delay to ensure scroll completes
+                        setTimeout(() => {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            this.classList.add('active');
+                        }, 300);
+                    }
+                });
+            });
+
+            // Add scroll event listener to update active link
+            window.addEventListener('scroll', updateActiveLink);
+
+            // Initial call to set correct active link
+            updateActiveLink();
+        });
+    </script>
+
 </body>
+
 </html>
