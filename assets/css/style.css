@@ -399,7 +399,6 @@ section {
     text-align: center;
 }
 
-/* Projects Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -410,17 +409,36 @@ section {
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 12px;
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, background-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
     height: 100%;
     cursor: pointer;
 }
 
-.project-card:hover {
-    background: var(--hover-bg);
-    transform: translateY(-5px);
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        rgba(220, 53, 69, 0.2), 
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-link {
@@ -435,7 +453,6 @@ section {
     height: 200px;
     overflow: hidden;
     position: relative;
-    flex: 0 0 auto;
 }
 
 .project-image img {
@@ -451,9 +468,9 @@ section {
 
 .project-content {
     padding: 1.25rem;
-    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
+    height: calc(100% - 200px);
 }
 
 .project-title {
@@ -464,20 +481,11 @@ section {
     gap: 0.5rem;
 }
 
-.project-title .fa-external-link-alt {
-    font-size: 0.8em;
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-}
-
-.project-card:hover .project-title .fa-external-link-alt {
-    opacity: 1;
-}
-
 .project-description {
     color: #8b949e;
     font-size: 0.9rem;
     margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
 .project-tags {
@@ -494,18 +502,6 @@ section {
     font-size: 0.8rem;
     color: #8b949e;
     pointer-events: none;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .project-image {
-        height: 180px;
-    }
 }
 
 /* Skills Grid */
