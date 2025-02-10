@@ -633,7 +633,7 @@ footer {
 
 
 .txt-rotate {
-    color: var(--accent-color); /* This will make the rotating text red */
+    color: #c0c0c0; /* This will make the rotating text red */
     min-width: 150px;
     display: inline-block;
 }
@@ -648,4 +648,79 @@ h1 {
 
 .hero-content {
     gap: 1rem;
+}
+
+.contact-cta {
+    text-align: center;
+    margin-top: 3rem;
+ }
+ 
+ .btn-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+ }
+ 
+ .btn-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(220, 53, 69, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+ }
+ 
+ .btn-cta:hover::before {
+    left: 100%;
+ }
+ 
+ .btn-cta:hover {
+    background: var(--hover-bg);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.2);
+ }
+ 
+ .btn-cta i {
+    margin-right: 8px;
+    color: var(--accent-color);
+ }
+
+ .whatsapp-top {
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.whatsapp-top:hover {
+    background: var(--hover-bg);
+    border-color: var(--text-color);
+    transform: translateY(-3px);
 }
