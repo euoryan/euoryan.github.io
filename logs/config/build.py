@@ -14,7 +14,7 @@ def convert_png_to_ico(png_path):
     return ico_path
 
 # Definindo caminhos
-app_path = r"C:\Users\Ryan\Documents\MEGA\Code\git codes\euoryan.github.io\logs\configsize.py"
+app_path = r"C:\Users\Ryan\Documents\MEGA\Code\git codes\euoryan.github.io\logs\config\configsize.py"
 png_icon_path = r"C:\Users\Ryan\Documents\MEGA\Code\git codes\euoryan.github.io\assets\images\favicon\euoryan.png"
 work_path = os.path.dirname(app_path)
 

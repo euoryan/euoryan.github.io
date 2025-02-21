@@ -4,9 +4,10 @@ import string
 import git
 import os
 import datetime
+import time
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, 
                            QWidget, QVBoxLayout, QHBoxLayout, QSystemTrayIcon, QMenu,
-                           QFileDialog, QMessageBox, QSpinBox)
+                           QFileDialog, QMessageBox, QSpinBox, QCheckBox)
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QPainter, QColor, QFont, QIcon
 
@@ -86,6 +87,7 @@ class TokenGeneratorApp(QMainWindow):
         self.total_tokens = 0
         self.current_token = 0
         self.batch_timer = None
+        self.wait_time = 45  # Tempo padrão de espera em segundos
         self.icon_path = os.path.join(os.path.dirname(__file__), 'assets', 'images', 'favicon', 'euoryan.png')
         self.initUI()
         self.setupTrayIcon()
@@ -105,6 +107,9 @@ class TokenGeneratorApp(QMainWindow):
                 min-height: 30px;
             }
             QLabel {
+                color: white;
+            }
+            QCheckBox {
                 color: white;
             }
         """)
@@ -155,6 +160,18 @@ class TokenGeneratorApp(QMainWindow):
         self.token_count_input.setFixedWidth(100)
         batch_layout.addWidget(self.token_count_input)
         
+        # Adiciona controle para tempo de espera
+        wait_label = QLabel("Intervalo (seg):")
+        batch_layout.addWidget(wait_label)
+        
+        self.wait_time_input = QSpinBox()
+        self.wait_time_input.setRange(1, 3600)  # Ampliar o intervalo (1s até 1h)
+        self.wait_time_input.setValue(self.wait_time)
+        self.wait_time_input.setFixedWidth(80)
+        self.wait_time_input.setKeyboardTracking(True)  # Permitir entrada pelo teclado
+        self.wait_time_input.valueChanged.connect(self.update_wait_time)
+        batch_layout.addWidget(self.wait_time_input)
+        
         self.batch_button = ModernButton("Iniciar Geração")
         self.batch_button.clicked.connect(self.start_batch_generation)
         self.batch_button.setEnabled(False)
@@ -167,12 +184,26 @@ class TokenGeneratorApp(QMainWindow):
         
         controls_layout.addWidget(batch_panel)
         
+        # Adiciona opção de pull antes do push
+        options_panel = QWidget()
+        options_layout = QHBoxLayout(options_panel)
+        options_layout.setContentsMargins(20, 0, 20, 10)
+        
+        self.pull_before_push_checkbox = QCheckBox("Pull antes do Push (recomendado)")
+        self.pull_before_push_checkbox.setChecked(True)
+        options_layout.addWidget(self.pull_before_push_checkbox)
+        
+        controls_layout.addWidget(options_panel)
+        
         main_layout.addWidget(controls_panel)
         
         self.status_label = QLabel("")
         self.status_label.setAlignment(Qt.AlignCenter)
         self.status_label.setStyleSheet("color: #00ff45; font-size: 12px;")
         main_layout.addWidget(self.status_label)
+        
+    def update_wait_time(self, value):
+        self.wait_time = value
         
     def setupTrayIcon(self):
         self.tray_icon = QSystemTrayIcon(self)
@@ -222,7 +253,9 @@ class TokenGeneratorApp(QMainWindow):
         self.generate_button.setEnabled(enabled)
         self.batch_button.setEnabled(enabled)
         self.token_count_input.setEnabled(enabled)
+        self.wait_time_input.setEnabled(enabled)
         self.path_button.setEnabled(enabled)
+        self.pull_before_push_checkbox.setEnabled(enabled)
         self.tray_generate.setEnabled(enabled)
 
     def confirm_quit(self):
@@ -351,11 +384,34 @@ class TokenGeneratorApp(QMainWindow):
             
             try:
                 repo = git.Repo(self.repo_path)
-                repo.git.add(os.path.join('logs', log_filename))
-                repo.index.commit(f"Add token {timestamp}")
+                
+                # Pull antes de fazer push se a opção estiver ativada
+                if self.pull_before_push_checkbox.isChecked():
+                    try:
+                        origin = repo.remote(name='origin')
+                        origin.pull()
+                    except Exception as pull_error:
+                        print(f"Pull error (não crítico): {pull_error}")
+                        # Continua mesmo se o pull falhar
+                
+                # Adiciona, commita e faz push de um único arquivo
+                relative_path = os.path.join('logs', log_filename)
+                repo.git.add(relative_path)
+                commit_msg = f"Add token {timestamp}"
+                repo.index.commit(commit_msg)
                 
                 origin = repo.remote(name='origin')
-                origin.push()
+                # Push com retry em caso de falha
+                max_retries = 3
+                for attempt in range(max_retries):
+                    try:
+                        origin.push()
+                        break
+                    except Exception as push_error:
+                        if attempt < max_retries - 1:
+                            time.sleep(2)  # Espera antes de tentar novamente
+                        else:
+                            raise push_error
                 
                 if is_batch:
                     self.current_token += 1
@@ -364,11 +420,11 @@ class TokenGeneratorApp(QMainWindow):
                     self.tray_status.setText(f"Status: {progress_msg}")
                     
                     if self.current_token < self.total_tokens and self.batch_running:
-                        # Agendar próxima geração com intervalo para evitar conflitos
+                        # Agendar próxima geração com o intervalo configurado
                         self.batch_timer = QTimer()
                         self.batch_timer.setSingleShot(True)
                         self.batch_timer.timeout.connect(lambda: self.generate_token(True))
-                        self.batch_timer.start(30000)
+                        self.batch_timer.start(self.wait_time * 1000)
                     else:
                         if self.batch_running:  # Se não foi cancelado
                             self.status_label.setText("✓ Geração em lote concluída!")
@@ -404,7 +460,7 @@ class TokenGeneratorApp(QMainWindow):
     def start_cooldown(self):
         self.can_generate = False
         self.generate_button.setEnabled(False)
-        self.remaining_time = 30
+        self.remaining_time = self.wait_time
         
         self.countdown_timer = QTimer()
         self.countdown_timer.timeout.connect(self.update_countdown)
