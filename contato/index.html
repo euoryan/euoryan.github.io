@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>euoryan // contato</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/images/favicon/euoryan.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-bg: #0d1117;
+            --color-text: #c9d1d9;
+            --color-border: #30363d;
+            --color-header: #161b22;
+            --color-btn-bg: #21262d;
+            --color-btn-hover: #2d333b;
+            --color-btn-border: #30363d;
+            --color-text-hover: #ffffff;
+            --color-footer-text: #8b949e;
+            --transition-smooth: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            background-color: var(--color-header);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-content {
+            background-color: var(--color-btn-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-content:hover {
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .contact-content h2 {
+            color: var(--color-text-hover);
+            margin-bottom: 16px;
+            font-size: 20px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 8px;
+        }
+
+        .contact-list {
+            list-style-type: none;
+            margin-bottom: 24px;
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-link:hover {
+            color: var(--color-text-hover);
+        }
+
+        .contact-link .icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 18px;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 22px;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid var(--color-btn-border);
+            border-radius: 5px;
+            appearance: none;
+            background-color: var(--color-btn-bg);
+            color: var(--color-text);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        .btn:hover {
+            background-color: var(--color-btn-hover);
+            border-color: var(--color-text);
+            color: var(--color-text-hover);
+            text-decoration: none;
+            transform: none;
+        }
+
+        .btn i {
+            font-size: 16px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .contact-content {
+                padding: 16px;
+                margin: 24px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Contato</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="contact-content">
+            <h2>Redes Sociais</h2>
+            <ul class="contact-list">
+                <li class="contact-item">
+                    <a href="https://github.com/euoryan" target="_blank" class="contact-link">
+                        <i class="fab fa-github icon"></i>
+                        GitHub
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="https://linkedin.com/in/euoryan" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin icon"></i>
+                        LinkedIn
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="https://www.instagram.com/euoryan/" target="_blank" class="contact-link">
+                        <i class="fab fa-instagram icon"></i>
+                        Instagram
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="https://twitter.com/euoryan_" target="_blank" class="contact-link">
+                        <i class="fab fa-twitter icon"></i>
+                        Twitter
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="contact-content">
+            <h2>Meios de Contato</h2>
+            <ul class="contact-list">
+                <li class="contact-item">
+                    <a href="mailto:ryanzera.dev@gmail.com" class="contact-link">
+                        <i class="far fa-envelope icon"></i>
+                        contato@euoryan.com
+                    </a>
+                </li>
+                <li class="contact-item">
+                    <a href="tel:+5548984613946" class="contact-link">
+                        <i class="fas fa-phone icon"></i>
+                        +55 (48) 98461-3946
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <a class="btn" href="../" style="cursor: pointer">
+            <i class="fas fa-arrow-left"></i>
+            Voltar
+        </a>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
+        
+            function loadFooter() {
+                fetch(footerUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar o footer');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const footerContainer = document.createElement('div');
+                        footerContainer.innerHTML = html.trim();
+        
+                        const newFooter = footerContainer.querySelector('footer');
+        
+                        if (newFooter) {
+                            const existingFooter = document.querySelector('footer');
+                            if (existingFooter) {
+                                existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                            } else {
+                                document.body.appendChild(newFooter);
+                            }
+                        } else {
+                            throw new Error('Nenhum footer encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar o footer:', error);
+                        
+                        const fallbackFooter = document.createElement('footer');
+                        fallbackFooter.className = 'footer';
+                        fallbackFooter.innerHTML = `
+                            <div class="footer-container">
+                                <div class="footer-rights">
+                                    <span>© 2024 por Ryan</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        const existingFooter = document.querySelector('footer');
+                        if (existingFooter) {
+                            existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                        } else {
+                            document.body.appendChild(fallbackFooter);
+                        }
+                    });
+            }
+        
+            loadFooter();
+        });
+    </script>
+</body>
+</html>
