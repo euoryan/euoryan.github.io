@@ -140,16 +140,16 @@ nav {
 .hero h1 .name::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -4px;
+  left: 2px;
+  bottom: 40px;
   width: 0;
   height: 2px;
   background-color: var(--accent-color);
-  transition: width 0.1s ease-in-out;
+  transition: width 1.2s ease-in-out;
 }
 
 .hero h1 .name:hover::after {
-  width: 25px
+  width: 100px
 }
 
 .hero p {
