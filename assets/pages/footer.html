@@ -1,9 +1,9 @@
 <footer class="footer">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+   
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-      
+     
       .footer {
         margin-top: auto;
         padding: 20px 0;
@@ -66,9 +66,9 @@
  
     <div class="footer-container">
       <div class="footer-links">
-        <a href="../../politica/">Política de Privacidade</a>
-        <a href="../../termos/">Termos de Uso</a>
-        <a href="../../contato/">Contato</a>
+        <a href="#" id="link-politica">Política de Privacidade</a>
+        <a href="#" id="link-termos">Termos de Uso</a>
+        <a href="#" id="link-contato">Contato</a>
       </div>
  
       <div class="footer-icons">
@@ -89,4 +89,19 @@
         <span> Todos os direitos reservados.</span>
       </div>
     </div>
+
+    <script>
+      (function() {
+        // Verifica se o domínio atual contém "euoryan"
+        const isDomainEuoryan = window.location.hostname.includes('euoryan');
+        
+        // Define a base URL para os links
+        const baseUrl = isDomainEuoryan ? '' : 'https://euoryan.com';
+        
+        // Configura os links com as URLs corretas
+        document.getElementById('link-politica').href = baseUrl + '/politica/';
+        document.getElementById('link-termos').href = baseUrl + '/termos/';
+        document.getElementById('link-contato').href = baseUrl + '/contato/';
+      })();
+    </script>
   </footer>
