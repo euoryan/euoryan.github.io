@@ -92,16 +92,20 @@
 
     <script>
       (function() {
-        // Verifica se o domínio atual contém "euoryan"
-        const isDomainEuoryan = window.location.hostname.includes('euoryan');
+        const currentHostname = window.location.hostname;
+        const isEuoryanDomain = currentHostname === 'euoryan.com' || 
+                                currentHostname === 'euoryan.github.io' || 
+                                currentHostname.endsWith('.euoryan.com');
         
-        // Define a base URL para os links
-        const baseUrl = isDomainEuoryan ? '' : 'https://euoryan.com';
-        
-        // Configura os links com as URLs corretas
-        document.getElementById('link-politica').href = baseUrl + '/politica/';
-        document.getElementById('link-termos').href = baseUrl + '/termos/';
-        document.getElementById('link-contato').href = baseUrl + '/contato/';
+        if (isEuoryanDomain) {
+          document.getElementById('link-politica').href = '/politica/';
+          document.getElementById('link-termos').href = '/termos/';
+          document.getElementById('link-contato').href = '/contato/';
+        } else {
+          document.getElementById('link-politica').href = 'https://euoryan.com/politica/';
+          document.getElementById('link-termos').href = 'https://euoryan.com/termos/';
+          document.getElementById('link-contato').href = 'https://euoryan.com/contato/';
+        }
       })();
     </script>
   </footer>
