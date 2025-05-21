@@ -16,98 +16,70 @@
             --color-btn-hover: #2d333b;
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
-            --color-footer-text: #8b949e;
-            --transition-smooth: all 0.3s ease-in-out;
+            --color-link-url: #6e7681;
+            --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            scroll-behavior: smooth;
-        }
-
-        .header {
-            background-color: var(--color-header);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--color-border);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 0 16px;
-            width: 100%;
-        }
-
-        h1 {
-            font-size: 22px;
-            color: #ffffff;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif;}
+        body {background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;}
+        .header {background-color: var(--color-header); padding: 20px 0; border-bottom: 1px solid var(--color-border); box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
+        .container {max-width: 750px; margin: 0 auto; padding: 0 16px; width: 100%;}
+        h1 {font-size: 22px; color: #fff; font-weight: 600; letter-spacing: -0.5px;}
+        
         .contact-content {
             background-color: var(--color-btn-bg);
             border: 1px solid var(--color-border);
             border-radius: 8px;
             padding: 24px;
             margin: 32px 0;
-            transition: var(--transition-smooth);
+            transition: var(--transition);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
-        .contact-content:hover {
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
-
-        .contact-content h2 {
-            color: var(--color-text-hover);
-            margin-bottom: 16px;
-            font-size: 20px;
-            border-bottom: 1px solid var(--color-border);
-            padding-bottom: 8px;
-        }
-
-        .contact-list {
-            list-style-type: none;
-            margin-bottom: 24px;
-        }
-
-        .contact-item {
-            margin-bottom: 12px;
-        }
-
+        .contact-content:hover {box-shadow: 0 6px 8px rgba(0,0,0,0.15);}
+        .contact-content h2 {color: #fff; margin-bottom: 16px; font-size: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px;}
+        
+        .contact-list {list-style: none; margin-bottom: 24px;}
+        .contact-item {display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;}
+        .contact-info {display: flex; flex-direction: column;}
+        
         .contact-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 10px;
             color: var(--color-text);
             text-decoration: none;
-            transition: var(--transition-smooth);
+            transition: var(--transition);
         }
-
-        .contact-link:hover {
-            color: var(--color-text-hover);
+        .contact-link:hover {color: #fff;}
+        .contact-link .icon {width: 24px; text-align: center; font-size: 20px;}
+        .contact-url {color: var(--color-link-url); font-size: 14px; margin-left: 34px;}
+        
+        .copy-btn {
+            padding: 3px 8px;
+            background-color: var(--color-btn-bg);
+            border: 1px solid var(--color-btn-border);
+            border-radius: 4px;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
         }
-
-        .contact-link .icon {
-            font-size: 20px;
-            width: 24px;
-            text-align: center;
+        .copy-btn:hover {background-color: var(--color-btn-hover); color: var(--color-text-hover);}
+        .copy-msg {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-header);
+            color: var(--color-text);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
         }
-
+        
         .btn {
             display: inline-flex;
             align-items: center;
@@ -115,50 +87,26 @@
             padding: 5px 18px;
             font-size: 15px;
             font-weight: 500;
-            line-height: 22px;
-            white-space: nowrap;
-            vertical-align: middle;
-            cursor: pointer;
-            user-select: none;
             border: 1px solid var(--color-btn-border);
             border-radius: 5px;
-            appearance: none;
             background-color: var(--color-btn-bg);
             color: var(--color-text);
-            transition: var(--transition-smooth);
+            transition: var(--transition);
             text-decoration: none;
             margin-bottom: 40px;
+            cursor: pointer;
         }
-
-        .btn:hover {
-            background-color: var(--color-btn-hover);
-            border-color: var(--color-text);
-            color: var(--color-text-hover);
-            text-decoration: none;
-            transform: none;
-        }
-
-        .btn i {
-            font-size: 16px;
-        }
-
-        main {
-            flex: 1;
-        }
-
+        .btn:hover {background-color: var(--color-btn-hover); color: #fff; border-color: var(--color-text);}
+        .btn i {font-size: 16px;}
+        
+        main {flex: 1;}
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 0 12px;
-            }
-
-            .contact-content {
-                padding: 16px;
-                margin: 24px 0;
-            }
-
-            h1 {
-                font-size: 20px;
-            }
+            .container {padding: 0 12px;}
+            .contact-content {padding: 16px; margin: 24px 0;}
+            h1 {font-size: 20px;}
+            .contact-item {flex-direction: column; align-items: flex-start;}
+            .copy-btn {margin-left: 34px; margin-top: 5px;}
         }
     </style>
 </head>
@@ -174,28 +122,52 @@
             <h2>Redes Sociais</h2>
             <ul class="contact-list">
                 <li class="contact-item">
-                    <a href="https://github.com/euoryan" target="_blank" class="contact-link">
-                        <i class="fab fa-github icon"></i>
-                        GitHub
-                    </a>
+                    <div class="contact-info">
+                        <a href="https://github.com/euoryan" target="_blank" class="contact-link">
+                            <i class="fab fa-github icon"></i>GitHub
+                        </a>
+                        <span class="contact-url">github.com/euoryan</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('https://github.com/euoryan', this)">
+                        <i class="far fa-copy"></i>
+                        <span class="copy-msg">Copiado!</span>
+                    </button>
                 </li>
                 <li class="contact-item">
-                    <a href="https://linkedin.com/in/euoryan" target="_blank" class="contact-link">
-                        <i class="fab fa-linkedin icon"></i>
-                        LinkedIn
-                    </a>
+                    <div class="contact-info">
+                        <a href="https://linkedin.com/in/euoryan" target="_blank" class="contact-link">
+                            <i class="fab fa-linkedin icon"></i>LinkedIn
+                        </a>
+                        <span class="contact-url">linkedin.com/in/euoryan</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('https://linkedin.com/in/euoryan', this)">
+                        <i class="far fa-copy"></i>
+                        <span class="copy-msg">Copiado!</span>
+                    </button>
                 </li>
                 <li class="contact-item">
-                    <a href="https://www.instagram.com/euoryan/" target="_blank" class="contact-link">
-                        <i class="fab fa-instagram icon"></i>
-                        Instagram
-                    </a>
+                    <div class="contact-info">
+                        <a href="https://www.instagram.com/euoryan/" target="_blank" class="contact-link">
+                            <i class="fab fa-instagram icon"></i>Instagram
+                        </a>
+                        <span class="contact-url">instagram.com/euoryan</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('https://www.instagram.com/euoryan/', this)">
+                        <i class="far fa-copy"></i>
+                        <span class="copy-msg">Copiado!</span>
+                    </button>
                 </li>
                 <li class="contact-item">
-                    <a href="https://twitter.com/euoryandev" target="_blank" class="contact-link">
-                        <i class="fab fa-twitter icon"></i>
-                        Twitter
-                    </a>
+                    <div class="contact-info">
+                        <a href="https://twitter.com/euoryandev" target="_blank" class="contact-link">
+                            <i class="fab fa-twitter icon"></i>Twitter
+                        </a>
+                        <span class="contact-url">twitter.com/euoryandev</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('https://twitter.com/euoryandev', this)">
+                        <i class="far fa-copy"></i>
+                        <span class="copy-msg">Copiado!</span>
+                    </button>
                 </li>
             </ul>
         </div>
@@ -204,78 +176,65 @@
             <h2>Meios de Contato</h2>
             <ul class="contact-list">
                 <li class="contact-item">
-                    <a href="mailto:ryanzera.dev@gmail.com" class="contact-link">
-                        <i class="far fa-envelope icon"></i>
-                        contato@euoryan.com
-                    </a>
-                </li>
-                <li class="contact-item">
-                    <a href="tel:+5548984613946" class="contact-link">
-                        <i class="fas fa-phone icon"></i>
-                        +55 (48) 98461-3946
-                    </a>
+                    <div class="contact-info">
+                        <a href="mailto:contato@euoryan.com" class="contact-link">
+                            <i class="far fa-envelope icon"></i>E-mail
+                        </a>
+                        <span class="contact-url">contato@euoryan.com</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('contato@euoryan.com', this)">
+                        <i class="far fa-copy"></i>
+                        <span class="copy-msg">Copiado!</span>
+                    </button>
                 </li>
             </ul>
         </div>
 
-        <a class="btn" href="../" style="cursor: pointer">
-            <i class="fas fa-arrow-left"></i>
-            Voltar
+        <a class="btn" href="../">
+            <i class="fas fa-arrow-left"></i>Voltar
         </a>
     </main>
 
     <script>
+        function copyText(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const msg = btnElement.querySelector('.copy-msg');
+                msg.style.visibility = 'visible';
+                msg.style.opacity = '1';
+                
+                setTimeout(() => {
+                    msg.style.visibility = 'hidden';
+                    msg.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
-        
-            function loadFooter() {
-                fetch(footerUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Erro ao carregar o footer');
-                        }
-                        return response.text();
-                    })
-                    .then(html => {
-                        const footerContainer = document.createElement('div');
-                        footerContainer.innerHTML = html.trim();
-        
-                        const newFooter = footerContainer.querySelector('footer');
-        
-                        if (newFooter) {
-                            const existingFooter = document.querySelector('footer');
-                            if (existingFooter) {
-                                existingFooter.parentNode.replaceChild(newFooter, existingFooter);
-                            } else {
-                                document.body.appendChild(newFooter);
-                            }
-                        } else {
-                            throw new Error('Nenhum footer encontrado');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erro ao carregar o footer:', error);
-                        
-                        const fallbackFooter = document.createElement('footer');
-                        fallbackFooter.className = 'footer';
-                        fallbackFooter.innerHTML = `
+            fetch('https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html')
+                .then(response => response.ok ? response.text() : Promise.reject('Erro ao carregar o footer'))
+                .then(html => {
+                    const container = document.createElement('div');
+                    container.innerHTML = html.trim();
+                    const newFooter = container.querySelector('footer');
+                    
+                    if (newFooter) {
+                        const existingFooter = document.querySelector('footer');
+                        existingFooter ? existingFooter.replaceWith(newFooter) : document.body.appendChild(newFooter);
+                    } else {
+                        throw new Error('Nenhum footer encontrado');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.body.insertAdjacentHTML('beforeend', 
+                        `<footer class="footer">
                             <div class="footer-container">
                                 <div class="footer-rights">
                                     <span>© 2024 por Ryan</span>
                                 </div>
                             </div>
-                        `;
-                        
-                        const existingFooter = document.querySelector('footer');
-                        if (existingFooter) {
-                            existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
-                        } else {
-                            document.body.appendChild(fallbackFooter);
-                        }
-                    });
-            }
-        
-            loadFooter();
+                        </footer>`);
+                });
         });
     </script>
 </body>
