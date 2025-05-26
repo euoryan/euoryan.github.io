@@ -17,6 +17,13 @@
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
             --color-footer-text: #8b949e;
+            --bg-primary: #0f1419;
+            --bg-secondary: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+            --link-color: #58a6ff;
+            --accent-color: #238636;
         }
 
         * {
@@ -37,24 +44,55 @@
             font-size: 14px;
         }
 
-        .header {
-            background-color: var(--color-header);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--color-border);
+        /* Navbar */
+        .navbar {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
+        .nav-container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        /* Container principal */
         .container {
             max-width: 750px;
             margin: 0 auto;
             padding: 0 16px;
             width: 100%;
-        }
-
-        h1 {
-            font-size: 22px;
-            color: #ffffff;
-            font-weight: 600;
-            letter-spacing: -0.5px;
         }
 
         .contact-content {
@@ -223,6 +261,25 @@
             flex: 1;
         }
 
+        /* Links gerais */
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Exceções para botões - sobrescreve o hover global */
+        .nav-back:hover,
+        .btn:hover,
+        .back-to-top:hover,
+        .contact-link:hover {
+            text-decoration: none !important;
+        }
+
+        /* Responsividade */
         @media (max-width: 790px) {
             .back-to-top {
                 right: 24px;
@@ -230,6 +287,14 @@
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .nav-title {
+                font-size: 16px;
+            }
+
             .container {
                 padding: 0 12px;
             }
@@ -237,10 +302,6 @@
             .contact-content {
                 padding: 16px;
                 margin: 24px 0;
-            }
-
-            h1 {
-                font-size: 20px;
             }
 
             .contact-item {
@@ -258,14 +319,29 @@
                 right: 20px;
             }
         }
+
+        @media (max-width: 480px) {
+            .nav-title {
+                font-size: 16px;
+            }
+            
+            .nav-back {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>Contato</h1>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-title">Contato</div>
+            <a href="../" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </a>
         </div>
-    </header>
+    </nav>
 
     <main class="container">
         <div class="contact-content">
@@ -415,7 +491,7 @@
                 e.preventDefault();
                 window.scrollTo({
                     top: 0,
-                    behavior: 'smooth'
+                    behavior: smooth
                 });
             });
 
