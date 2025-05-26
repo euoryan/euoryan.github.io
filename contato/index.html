@@ -16,70 +16,155 @@
             --color-btn-hover: #2d333b;
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
-            --color-link-url: #6e7681;
-            --transition: all 0.3s ease;
+            --color-footer-text: #8b949e;
         }
 
-        * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif;}
-        body {background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;}
-        .header {background-color: var(--color-header); padding: 20px 0; border-bottom: 1px solid var(--color-border); box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
-        .container {max-width: 750px; margin: 0 auto; padding: 0 16px; width: 100%;}
-        h1 {font-size: 22px; color: #fff; font-weight: 600; letter-spacing: -0.5px;}
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+            font-size: 14px;
+        }
+
+        .header {
+            background-color: var(--color-header);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
         .contact-content {
             background-color: var(--color-btn-bg);
             border: 1px solid var(--color-border);
             border-radius: 8px;
             padding: 24px;
             margin: 32px 0;
-            transition: var(--transition);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .contact-content:hover {box-shadow: 0 6px 8px rgba(0,0,0,0.15);}
-        .contact-content h2 {color: #fff; margin-bottom: 16px; font-size: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px;}
-        
-        .contact-list {list-style: none; margin-bottom: 24px;}
-        .contact-item {display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;}
-        .contact-info {display: flex; flex-direction: column;}
-        
+
+        h2 {
+            color: var(--color-text-hover);
+            margin: 0 0 16px 0;
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
         .contact-link {
             display: flex;
             align-items: center;
             gap: 10px;
             color: var(--color-text);
             text-decoration: none;
-            transition: var(--transition);
+            font-size: 14px;
+            transition: all 0.2s;
         }
-        .contact-link:hover {color: #fff;}
-        .contact-link .icon {width: 24px; text-align: center; font-size: 20px;}
-        .contact-url {color: var(--color-link-url); font-size: 14px; margin-left: 34px;}
-        
+
+        .contact-link:hover {
+            color: var(--color-text-hover);
+        }
+
+        .contact-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .contact-url {
+            color: var(--color-footer-text);
+            font-size: 12px;
+            margin-left: 30px;
+        }
+
         .copy-btn {
-            padding: 3px 8px;
+            padding: 4px 10px;
             background-color: var(--color-btn-bg);
             border: 1px solid var(--color-btn-border);
-            border-radius: 4px;
+            border-radius: 5px;
             color: var(--color-text);
             cursor: pointer;
-            transition: var(--transition);
+            font-size: 12px;
+            transition: all 0.2s;
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
-        .copy-btn:hover {background-color: var(--color-btn-hover); color: var(--color-text-hover);}
+
+        .copy-btn:hover {
+            background-color: var(--color-btn-hover);
+            color: var(--color-text-hover);
+        }
+
         .copy-msg {
             position: absolute;
-            top: -30px;
+            top: -32px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--color-header);
             color: var(--color-text);
-            padding: 3px 8px;
+            padding: 4px 8px;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 11px;
+            white-space: nowrap;
             opacity: 0;
             visibility: hidden;
-            transition: var(--transition);
+            transition: all 0.2s;
+            border: 1px solid var(--color-border);
         }
-        
+
+        .copy-msg.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -87,26 +172,91 @@
             padding: 5px 18px;
             font-size: 15px;
             font-weight: 500;
+            line-height: 22px;
+            cursor: pointer;
             border: 1px solid var(--color-btn-border);
             border-radius: 5px;
             background-color: var(--color-btn-bg);
             color: var(--color-text);
-            transition: var(--transition);
             text-decoration: none;
             margin-bottom: 40px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--color-btn-hover);
+            color: var(--color-text-hover);
+            text-decoration: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: calc(50% - 375px + 24px);
+            background-color: var(--color-btn-bg);
+            color: var(--color-text);
+            width: 44px;
+            height: 36px;
+            border: 1px solid var(--color-btn-border);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.2s;
+            font-size: 14px;
             cursor: pointer;
         }
-        .btn:hover {background-color: var(--color-btn-hover); color: #fff; border-color: var(--color-text);}
-        .btn i {font-size: 16px;}
-        
-        main {flex: 1;}
-        
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--color-btn-hover);
+            color: var(--color-text-hover);
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        @media (max-width: 790px) {
+            .back-to-top {
+                right: 24px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .container {padding: 0 12px;}
-            .contact-content {padding: 16px; margin: 24px 0;}
-            h1 {font-size: 20px;}
-            .contact-item {flex-direction: column; align-items: flex-start;}
-            .copy-btn {margin-left: 34px; margin-top: 5px;}
+            .container {
+                padding: 0 12px;
+            }
+
+            .contact-content {
+                padding: 16px;
+                margin: 24px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .copy-btn {
+                align-self: flex-end;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -124,7 +274,7 @@
                 <li class="contact-item">
                     <div class="contact-info">
                         <a href="https://github.com/euoryan" target="_blank" class="contact-link">
-                            <i class="fab fa-github icon"></i>GitHub
+                            <i class="fab fa-github"></i>GitHub
                         </a>
                         <span class="contact-url">github.com/euoryan</span>
                     </div>
@@ -136,7 +286,7 @@
                 <li class="contact-item">
                     <div class="contact-info">
                         <a href="https://linkedin.com/in/euoryan" target="_blank" class="contact-link">
-                            <i class="fab fa-linkedin icon"></i>LinkedIn
+                            <i class="fab fa-linkedin"></i>LinkedIn
                         </a>
                         <span class="contact-url">linkedin.com/in/euoryan</span>
                     </div>
@@ -148,23 +298,11 @@
                 <li class="contact-item">
                     <div class="contact-info">
                         <a href="https://www.instagram.com/euoryan/" target="_blank" class="contact-link">
-                            <i class="fab fa-instagram icon"></i>Instagram
+                            <i class="fab fa-instagram"></i>Instagram
                         </a>
                         <span class="contact-url">instagram.com/euoryan</span>
                     </div>
                     <button class="copy-btn" onclick="copyText('https://www.instagram.com/euoryan/', this)">
-                        <i class="far fa-copy"></i>
-                        <span class="copy-msg">Copiado!</span>
-                    </button>
-                </li>
-                <li class="contact-item">
-                    <div class="contact-info">
-                        <a href="https://twitter.com/euoryandev" target="_blank" class="contact-link">
-                            <i class="fab fa-twitter icon"></i>Twitter
-                        </a>
-                        <span class="contact-url">twitter.com/euoryandev</span>
-                    </div>
-                    <button class="copy-btn" onclick="copyText('https://twitter.com/euoryandev', this)">
                         <i class="far fa-copy"></i>
                         <span class="copy-msg">Copiado!</span>
                     </button>
@@ -178,7 +316,7 @@
                 <li class="contact-item">
                     <div class="contact-info">
                         <a href="mailto:contato@euoryan.com" class="contact-link">
-                            <i class="far fa-envelope icon"></i>E-mail
+                            <i class="far fa-envelope"></i>E-mail
                         </a>
                         <span class="contact-url">contato@euoryan.com</span>
                     </div>
@@ -191,50 +329,100 @@
         </div>
 
         <a class="btn" href="../">
-            <i class="fas fa-arrow-left"></i>Voltar
+            <i class="fas fa-arrow-left"></i>
+            Voltar
         </a>
     </main>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <script>
         function copyText(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
                 const msg = btnElement.querySelector('.copy-msg');
-                msg.style.visibility = 'visible';
-                msg.style.opacity = '1';
+                msg.classList.add('show');
                 
                 setTimeout(() => {
-                    msg.style.visibility = 'hidden';
-                    msg.style.opacity = '0';
+                    msg.classList.remove('show');
                 }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar:', err);
             });
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html')
-                .then(response => response.ok ? response.text() : Promise.reject('Erro ao carregar o footer'))
-                .then(html => {
-                    const container = document.createElement('div');
-                    container.innerHTML = html.trim();
-                    const newFooter = container.querySelector('footer');
-                    
-                    if (newFooter) {
-                        const existingFooter = document.querySelector('footer');
-                        existingFooter ? existingFooter.replaceWith(newFooter) : document.body.appendChild(newFooter);
-                    } else {
-                        throw new Error('Nenhum footer encontrado');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    document.body.insertAdjacentHTML('beforeend', 
-                        `<footer class="footer">
+            const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
+            const backToTopBtn = document.getElementById('backToTop');
+        
+            function loadFooter() {
+                fetch(footerUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar o footer');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const footerContainer = document.createElement('div');
+                        footerContainer.innerHTML = html.trim();
+        
+                        const newFooter = footerContainer.querySelector('footer');
+        
+                        if (newFooter) {
+                            const existingFooter = document.querySelector('footer');
+                            if (existingFooter) {
+                                existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                            } else {
+                                document.body.appendChild(newFooter);
+                            }
+                        } else {
+                            throw new Error('Nenhum footer encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar o footer:', error);
+                        
+                        const fallbackFooter = document.createElement('footer');
+                        fallbackFooter.className = 'footer';
+                        fallbackFooter.innerHTML = `
                             <div class="footer-container">
                                 <div class="footer-rights">
                                     <span>© 2024 por Ryan</span>
                                 </div>
                             </div>
-                        </footer>`);
+                        `;
+                        
+                        const existingFooter = document.querySelector('footer');
+                        if (existingFooter) {
+                            existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                        } else {
+                            document.body.appendChild(fallbackFooter);
+                        }
+                    });
+            }
+
+            function toggleBackToTop() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
+            });
+
+            window.addEventListener('scroll', toggleBackToTop);
+            
+            loadFooter();
+            toggleBackToTop();
         });
     </script>
 </body>
