@@ -17,14 +17,13 @@
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
             --color-footer-text: #8b949e;
-            --transition-smooth: all 0.3s ease-in-out;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
         }
 
         body {
@@ -35,13 +34,13 @@
             display: flex;
             flex-direction: column;
             scroll-behavior: smooth;
+            font-size: 14px;
         }
 
         .header {
             background-color: var(--color-header);
             padding: 20px 0;
             border-bottom: 1px solid var(--color-border);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .container {
@@ -64,30 +63,42 @@
             border-radius: 8px;
             padding: 24px;
             margin: 32px 0;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .privacy-content:hover {
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
-
-        .privacy-content h2 {
-            color: var(--color-text-hover);
-            margin-bottom: 16px;
-            font-size: 20px;
+        .document-meta {
+            color: var(--color-footer-text);
+            font-size: 13px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--color-border);
-            padding-bottom: 8px;
         }
 
-        .privacy-content p {
-            margin-bottom: 16px;
-            line-height: 1.7;
+        h2 {
+            color: var(--color-text-hover);
+            margin: 24px 0 12px 0;
+            font-size: 16px;
+            font-weight: 600;
         }
 
-        .privacy-content ul {
-            margin-left: 24px;
-            margin-bottom: 16px;
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 14px;
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        ul {
+            margin: 12px 0 12px 24px;
+            font-size: 13px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
 
         .btn {
@@ -98,30 +109,50 @@
             font-size: 15px;
             font-weight: 500;
             line-height: 22px;
-            white-space: nowrap;
-            vertical-align: middle;
             cursor: pointer;
-            user-select: none;
             border: 1px solid var(--color-btn-border);
             border-radius: 5px;
-            appearance: none;
             background-color: var(--color-btn-bg);
             color: var(--color-text);
-            transition: var(--transition-smooth);
             text-decoration: none;
             margin-bottom: 40px;
+            transition: all 0.2s;
         }
 
         .btn:hover {
             background-color: var(--color-btn-hover);
-            border-color: var(--color-text);
             color: var(--color-text-hover);
-            text-decoration: none; /* Sem sublinhado */
-            transform: none; /* Sem zoom */
+            text-decoration: none;
         }
 
-        .btn i {
-            font-size: 16px;
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: calc(50% - 375px + 24px);
+            background-color: var(--color-btn-bg);
+            color: var(--color-text);
+            width: 44px;
+            height: 36px;
+            border: 1px solid var(--color-btn-border);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.2s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--color-btn-hover);
+            color: var(--color-text-hover);
+            text-decoration: none;
         }
 
         main {
@@ -131,12 +162,16 @@
         a {
             color: #58a6ff;
             text-decoration: none;
-            transition: var(--transition-smooth);
         }
 
         a:hover {
             text-decoration: underline;
-            color: #79b8ff;
+        }
+
+        @media (max-width: 790px) {
+            .back-to-top {
+                right: 24px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -152,6 +187,11 @@
             h1 {
                 font-size: 20px;
             }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -164,108 +204,184 @@
 
     <main class="container">
         <div class="privacy-content">
-            <h2>Última atualização: 14 de Novembro de 2024</h2>
-            <p>Esta Política de Privacidade descreve nossas políticas e procedimentos sobre a coleta, uso e divulgação de suas informações quando você usa o Serviço e explica seus direitos de privacidade e como a lei o protege.</p>
+            <div class="document-meta">
+                <strong>Última atualização:</strong> 14 de Novembro de 2024
+            </div>
+
+            <p>Esta Política de Privacidade descreve nossas políticas e procedimentos sobre a coleta, uso e divulgação de suas informações quando você usa o site "euoryan" e explica seus direitos de privacidade e como a lei o protege.</p>
+
             <p>Desenvolvido para você, com você em mente; <a href="https://www.instagram.com/euoryan" target="_blank">A vida é curta, escreva códigos ;)</a></p>
 
-            <h2>Interpretação e Definições</h2>
+            <h2>1. Interpretação e Definições</h2>
             <p>As palavras com a letra inicial maiúscula têm significados definidos nas seguintes condições. As seguintes definições terão o mesmo significado, independentemente de aparecerem no singular ou no plural.</p>
-
-            <h2>Coleta e Uso de Seus Dados Pessoais</h2>
-            <p>Ao usar Nosso Serviço, podemos solicitar que você nos forneça certas informações pessoalmente identificáveis que podem ser usadas para contatá-lo ou identificá-lo.</p>
-
-            <h2>Tipos de Dados Coletados</h2>
-            <p>Podemos coletar os seguintes tipos de dados:</p>
+            
+            <p>Para os fins desta Política de Privacidade:</p>
             <ul>
-                <li>Endereço de e-mail</li>
-                <li>Nome e sobrenome</li>
-                <li>Número de telefone</li>
-                <li>Endereço</li>
-                <li>Dados de uso</li>
+                <li><strong>Site</strong> refere-se ao "euoryan", acessível através de euoryan.com</li>
+                <li><strong>Você</strong> refere-se ao indivíduo que acessa ou usa o Site</li>
+                <li><strong>Serviço</strong> refere-se ao Site</li>
+                <li><strong>Dados Pessoais</strong> são quaisquer informações que se relacionem com um indivíduo identificado ou identificável</li>
             </ul>
 
-            <h2>Uso de Seus Dados Pessoais</h2>
-            <p>A Empresa pode usar Dados Pessoais para os seguintes fins:</p>
+            <h2>2. Coleta e Uso de Seus Dados Pessoais</h2>
+            <p>O Site "euoryan" foi desenvolvido com foco na privacidade do usuário. Nossa plataforma é destinada à divulgação de projetos, conhecimentos técnicos e conteúdos relacionados à área de desenvolvimento e tecnologia.</p>
+
+            <h2>3. Tipos de Dados Coletados</h2>
+            <p>Atualmente, o Site não coleta automaticamente dados pessoais dos usuários. No entanto, em situações específicas, podemos coletar as seguintes informações quando fornecidas voluntariamente:</p>
             <ul>
-                <li>Fornecer e manter Nosso Serviço</li>
-                <li>Gerenciar Sua Conta</li>
-                <li>Para entrar em contato com Você</li>
-                <li>Gerenciar Seus pedidos</li>
+                <li>Endereço de e-mail (através de formulários de contato)</li>
+                <li>Nome (quando fornecido em comunicações)</li>
+                <li>Dados de navegação básicos (através de logs do servidor)</li>
+                <li>Informações técnicas do dispositivo (tipo de navegador, sistema operacional)</li>
             </ul>
 
-            <h2>Segurança de Seus Dados Pessoais</h2>
-            <p>A segurança de Seus Dados Pessoais é importante para Nós, mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro.</p>
-
-            <h2>Alterações a Esta Política de Privacidade</h2>
-            <p>Podemos atualizar Nossa Política de Privacidade de tempos em tempos. Notificaremos Você sobre quaisquer alterações publicando a nova Política de Privacidade nesta página.</p>
-
-            <h2>Entre em Contato Conosco</h2>
-            <p>Se você tiver alguma dúvida sobre esta Política de Privacidade, você pode nos contatar:</p>
+            <h2>4. Finalidade do Uso dos Dados</h2>
+            <p>Quando coletamos dados pessoais, utilizamos exclusivamente para os seguintes fins:</p>
             <ul>
-                <li>E-mail: <a href="mailto:ryanzera.dev@gmail.com">contato@euoryan.com</a></li>
+                <li>Responder a solicitações de contato e comunicações</li>
+                <li>Melhorar a experiência de navegação no Site</li>
+                <li>Manter a segurança e funcionalidade do Site</li>
+                <li>Cumprir obrigações legais quando aplicável</li>
+            </ul>
+
+            <h2>5. Compartilhamento de Dados</h2>
+            <p>Não vendemos, alugamos ou compartilhamos seus dados pessoais com terceiros para fins comerciais. Seus dados podem ser compartilhados apenas nas seguintes circunstâncias:</p>
+            <ul>
+                <li>Quando exigido por lei ou processo legal</li>
+                <li>Para proteger nossos direitos legais</li>
+                <li>Com seu consentimento explícito</li>
+            </ul>
+
+            <h2>6. Segurança dos Dados</h2>
+            <p>A segurança de seus dados pessoais é importante para nós. Implementamos medidas de segurança técnicas e organizacionais apropriadas para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+
+            <p>No entanto, lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta.</p>
+
+            <h2>7. Cookies e Tecnologias Similares</h2>
+            <p>O Site pode utilizar cookies e tecnologias similares para melhorar a experiência do usuário. Os cookies são pequenos arquivos de texto armazenados em seu dispositivo que nos ajudam a:</p>
+            <ul>
+                <li>Lembrar suas preferências de navegação</li>
+                <li>Analisar o tráfego do site</li>
+                <li>Personalizar o conteúdo apresentado</li>
+            </ul>
+
+            <h2>8. Seus Direitos de Privacidade</h2>
+            <p>Você tem o direito de:</p>
+            <ul>
+                <li>Solicitar acesso aos seus dados pessoais</li>
+                <li>Solicitar correção de dados incorretos</li>
+                <li>Solicitar exclusão de seus dados</li>
+                <li>Opor-se ao processamento de seus dados</li>
+                <li>Solicitar a portabilidade dos dados</li>
+            </ul>
+
+            <h2>9. Retenção de Dados</h2>
+            <p>Mantemos seus dados pessoais apenas pelo tempo necessário para cumprir as finalidades descritas nesta política, salvo quando um período de retenção mais longo for exigido ou permitido por lei.</p>
+
+            <h2>10. Links Externos</h2>
+            <p>Nosso Site pode conter links para sites de terceiros. Esta Política de Privacidade não se aplica a esses sites externos. Recomendamos que você leia as políticas de privacidade de qualquer site de terceiros que visitar.</p>
+
+            <h2>11. Alterações a Esta Política</h2>
+            <p>Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações significativas publicando a nova Política de Privacidade nesta página com uma nova data de "última atualização".</p>
+
+            <p>É recomendável revisar esta Política de Privacidade periodicamente para se manter informado sobre como protegemos suas informações.</p>
+
+            <h2>12. Lei Aplicável</h2>
+            <p>Esta Política de Privacidade é regida pelas leis da República Federativa do Brasil, incluindo a Lei Geral de Proteção de Dados (LGPD). Todas as questões relacionadas à privacidade estarão sujeitas à jurisdição dos tribunais brasileiros competentes.</p>
+
+            <h2>13. Contato</h2>
+            <p>Se você tiver alguma dúvida sobre esta Política de Privacidade, seus direitos de privacidade, ou desejar exercer qualquer um de seus direitos, você pode nos contatar através de:</p>
+            <ul>
+                <li>E-mail: <a href="mailto:ryanzera.dev@gmail.com">ryanzera.dev@gmail.com</a></li>
                 <li>Site: <a href="https://euoryan.com" target="_blank">euoryan.com</a></li>
             </ul>
+
+            <p>Faremos o possível para responder às suas solicitações dentro de um prazo razoável e de acordo com a legislação aplicável.</p>
         </div>
 
-        <a class="btn" href="../" style="cursor: pointer">
+        <a class="btn" href="../">
             <i class="fas fa-arrow-left"></i>
             Voltar
         </a>
     </main>
 
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
-      
-          function loadFooter() {
-              fetch(footerUrl)
-                  .then(response => {
-                      if (!response.ok) {
-                          throw new Error('Erro ao carregar o footer');
-                      }
-                      return response.text();
-                  })
-                  .then(html => {
-                      const footerContainer = document.createElement('div');
-                      footerContainer.innerHTML = html.trim();
-      
-                      const newFooter = footerContainer.querySelector('footer');
-      
-                      if (newFooter) {
-                          const existingFooter = document.querySelector('footer');
-                          if (existingFooter) {
-                              existingFooter.parentNode.replaceChild(newFooter, existingFooter);
-                          } else {
-                              document.body.appendChild(newFooter);
-                          }
-                      } else {
-                          throw new Error('Nenhum footer encontrado');
-                      }
-                  })
-                  .catch(error => {
-                      console.error('Erro ao carregar o footer:', error);
-                      
-                      const fallbackFooter = document.createElement('footer');
-                      fallbackFooter.className = 'footer';
-                      fallbackFooter.innerHTML = `
-                          <div class="footer-container">
-                              <div class="footer-rights">
-                                  <span>© 2024 por Ryan</span>
-                              </div>
-                          </div>
-                      `;
-                      
-                      const existingFooter = document.querySelector('footer');
-                      if (existingFooter) {
-                          existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
-                      } else {
-                          document.body.appendChild(fallbackFooter);
-                      }
-                  });
-          }
-      
-          loadFooter();
-      });
-  </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
+            const backToTopBtn = document.getElementById('backToTop');
+        
+            function loadFooter() {
+                fetch(footerUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar o footer');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const footerContainer = document.createElement('div');
+                        footerContainer.innerHTML = html.trim();
+        
+                        const newFooter = footerContainer.querySelector('footer');
+        
+                        if (newFooter) {
+                            const existingFooter = document.querySelector('footer');
+                            if (existingFooter) {
+                                existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                            } else {
+                                document.body.appendChild(newFooter);
+                            }
+                        } else {
+                            throw new Error('Nenhum footer encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar o footer:', error);
+                        
+                        const fallbackFooter = document.createElement('footer');
+                        fallbackFooter.className = 'footer';
+                        fallbackFooter.innerHTML = `
+                            <div class="footer-container">
+                                <div class="footer-rights">
+                                    <span>© 2024 por Ryan</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        const existingFooter = document.querySelector('footer');
+                        if (existingFooter) {
+                            existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                        } else {
+                            document.body.appendChild(fallbackFooter);
+                        }
+                    });
+            }
+
+            function toggleBackToTop() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            window.addEventListener('scroll', toggleBackToTop);
+            
+            loadFooter();
+            toggleBackToTop();
+        });
+    </script>
 </body>
 </html>
