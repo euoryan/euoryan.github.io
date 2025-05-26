@@ -17,7 +17,6 @@
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
             --color-footer-text: #8b949e;
-            --transition-smooth: all 0.3s ease-in-out;
         }
 
         * {
@@ -35,13 +34,13 @@
             display: flex;
             flex-direction: column;
             scroll-behavior: smooth;
+            font-size: 14px;
         }
 
         .header {
             background-color: var(--color-header);
             padding: 20px 0;
             border-bottom: 1px solid var(--color-border);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .container {
@@ -64,34 +63,42 @@
             border-radius: 8px;
             padding: 24px;
             margin: 32px 0;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .terms-content:hover {
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
-
-        .terms-content h2 {
-            color: var(--color-text-hover);
-            margin-bottom: 16px;
-            font-size: 20px;
+        .document-meta {
+            color: var(--color-footer-text);
+            font-size: 13px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--color-border);
-            padding-bottom: 8px;
         }
 
-        .terms-content p {
-            margin-bottom: 16px;
-            line-height: 1.7;
+        h2 {
+            color: var(--color-text-hover);
+            margin: 24px 0 12px 0;
+            font-size: 16px;
+            font-weight: 600;
         }
 
-        .terms-content ol {
-            margin-left: 24px;
-            margin-bottom: 16px;
+        h2:first-of-type {
+            margin-top: 0;
         }
 
-        .terms-content ol li {
-            margin-bottom: 12px;
+        p {
+            margin-bottom: 14px;
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        ol {
+            margin: 12px 0 12px 24px;
+            font-size: 13px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
 
         .btn {
@@ -102,30 +109,50 @@
             font-size: 15px;
             font-weight: 500;
             line-height: 22px;
-            white-space: nowrap;
-            vertical-align: middle;
             cursor: pointer;
-            user-select: none;
             border: 1px solid var(--color-btn-border);
             border-radius: 5px;
-            appearance: none;
             background-color: var(--color-btn-bg);
             color: var(--color-text);
-            transition: var(--transition-smooth);
             text-decoration: none;
             margin-bottom: 40px;
+            transition: all 0.2s;
         }
 
         .btn:hover {
             background-color: var(--color-btn-hover);
-            border-color: var(--color-text);
             color: var(--color-text-hover);
-            text-decoration: none; /* Sem sublinhado */
-            transform: none; /* Sem zoom */
+            text-decoration: none;
         }
 
-        .btn i {
-            font-size: 16px;
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: calc(50% - 375px + 24px);
+            background-color: var(--color-btn-bg);
+            color: var(--color-text);
+            width: 44px;
+            height: 36px;
+            border: 1px solid var(--color-btn-border);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.2s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--color-btn-hover);
+            color: var(--color-text-hover);
+            text-decoration: none;
         }
 
         main {
@@ -135,12 +162,16 @@
         a {
             color: #58a6ff;
             text-decoration: none;
-            transition: var(--transition-smooth);
         }
 
         a:hover {
             text-decoration: underline;
-            color: #79b8ff;
+        }
+
+        @media (max-width: 790px) {
+            .back-to-top {
+                right: 24px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -156,6 +187,11 @@
             h1 {
                 font-size: 20px;
             }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -168,103 +204,137 @@
 
     <main class="container">
         <div class="terms-content">
-            <h2>Última atualização: 14 de Novembro de 2024</h2>
-            <p>Este Termo de Uso estabelece os termos e condições que regem o uso do nosso site Eu o Ryan. Ao acessar o site, você concorda em seguir estes termos e condições, cumprir todas as leis e regulamentos aplicáveis, e aceitar a responsabilidade pelo cumprimento das leis locais. Se você discordar de qualquer um destes termos, está proibido de usar ou acessar este site. Os materiais deste site estão protegidos por leis de direitos autorais e marcas registradas.</p>
+            <div class="document-meta">
+                <strong>Última atualização:</strong> 14 de Novembro de 2024
+            </div>
+
+            <p>Este Termo de Uso estabelece os termos e condições que regem o uso do site "euoryan". Ao acessar o site, você concorda em seguir estes termos e condições, cumprir todas as leis e regulamentos aplicáveis, e aceitar a responsabilidade pelo cumprimento das leis locais. Se você discordar de qualquer um destes termos, está proibido de usar ou acessar este site.</p>
+
             <p>Desenvolvido para você, com você em mente; <a href="https://www.instagram.com/euoryan" target="_blank">A vida é curta, escreva códigos ;)</a></p>
 
-            <h2>1. Termos</h2>
-            <p>Ao acessar o site Eu o Ryan, você concorda em seguir estes termos de serviço, todas as leis e regulamentos aplicáveis, e concorda que é responsável pelo cumprimento das leis locais aplicáveis. Se não concordar com algum desses termos, está proibido de usar ou acessar este site. Os materiais contidos neste site estão protegidos por leis de direitos autorais e marcas registradas.</p>
+            <h2>1. Definições e Aceitação dos Termos</h2>
+            <p>Ao acessar e utilizar o site "euoryan", você declara ter lido, compreendido e concordado integralmente com os presentes Termos de Uso. Este acordo constitui um contrato juridicamente vinculativo entre você e os proprietários do Site.</p>
+            
+            <p>O Site é uma plataforma digital destinada à divulgação de projetos, conhecimentos técnicos e conteúdos relacionados à área de desenvolvimento e tecnologia. Todos os materiais e informações disponibilizados estão sujeitos aos termos aqui estabelecidos.</p>
 
             <h2>2. Licença de Uso</h2>
-            <p>É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site Eu o Ryan apenas para visualização transatória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título, e sob esta licença, você não pode:</p>
+            <p>É concedida permissão para visualizar temporariamente os materiais do site "euoryan" apenas para uso pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título, e sob esta licença, você não pode:</p>
             <ol>
                 <li>Modificar ou copiar os materiais;</li>
-                <li>Usar os materiais para qualquer fim comercial ou para qualquer exibição pública (comercial ou não comercial);</li>
-                <li>Tentar descompilar ou fazer engenharia reversa de qualquer software contido no site Eu o Ryan;</li>
-                <li>Remover quaisquer notações de direitos autorais ou outras notações proprietárias dos materiais; ou</li>
-                <li>Transferir os materiais para outra pessoa ou 'espelhar' os materiais em qualquer outro servidor.</li>
+                <li>Usar os materiais para qualquer fim comercial ou para qualquer exibição pública;</li>
+                <li>Tentar descompilar ou fazer engenharia reversa de qualquer software;</li>
+                <li>Remover quaisquer notações de direitos autorais ou outras notações proprietárias;</li>
+                <li>Transferir os materiais para outra pessoa ou espelhar em qualquer servidor.</li>
             </ol>
-            <p>Esta licença será automaticamente rescindida se você violar qualquer uma dessas restrições e pode ser encerrada pelo Eu o Ryan a qualquer momento. Ao encerrar a visualização destes materiais ou ao término desta licença, você deve destruir quaisquer materiais baixados em sua posse, seja em formato eletrônico ou impresso.</p>
 
-            <h2>3. Isenção de Responsabilidade</h2>
-            <p>Os materiais no site Eu o Ryan são fornecidos 'como estão'. Eu o Ryan não oferece garantias, expressas ou implícitas, e por este meio isenta e nega todas as outras garantias, incluindo, sem limitação, garantias ou condições implícitas de comerciabilidade, adequação a um propósito específico ou não violação de propriedade intelectual ou outra violação de direitos.</p>
-            <p>Além disso, Eu o Ryan não garante nem faz representações sobre a precisão, resultados prováveis ou confiabilidade do uso dos materiais em seu site ou de outra forma relacionados a esses materiais ou em qualquer site vinculado a este site.</p>
+            <h2>3. Propriedade Intelectual</h2>
+            <p>Todo o conteúdo presente no Site, incluindo textos, imagens, códigos, design e funcionalidades, constitui propriedade intelectual dos proprietários do Site. Os direitos são protegidos pelas leis de direitos autorais e demais legislações aplicáveis.</p>
 
-            <h2>4. Limitações</h2>
-            <p>Em nenhum caso, Eu o Ryan ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro, ou devido à interrupção de negócios) decorrentes do uso ou da incapacidade de usar os materiais no site Eu o Ryan, mesmo que Eu o Ryan ou um representante autorizado tenha sido notificado oralmente ou por escrito sobre a possibilidade de tais danos. Algumas jurisdições não permitem limitações em garantias implícitas ou limitações de responsabilidade por danos consequentes ou incidentais, portanto, essas limitações podem não se aplicar a você.</p>
+            <p>O acesso ao Site não confere qualquer direito de propriedade sobre o conteúdo. Qualquer uso não autorizado poderá constituir violação dos direitos de propriedade intelectual.</p>
+
+            <h2>4. Limitações de Responsabilidade</h2>
+            <p>Os materiais do site são fornecidos "como estão". O site não oferece garantias, expressas ou implícitas, e isenta todas as outras garantias, incluindo garantias de comerciabilidade, adequação a um propósito específico ou não violação de propriedade intelectual.</p>
+
+            <p>Em nenhum caso os proprietários do Site serão responsáveis por quaisquer danos decorrentes do uso ou da incapacidade de usar os materiais, mesmo que tenham sido notificados sobre a possibilidade de tais danos.</p>
 
             <h2>5. Precisão dos Materiais</h2>
-            <p>Os materiais que aparecem no site Eu o Ryan podem incluir erros técnicos, tipográficos ou fotográficos. Eu o Ryan não garante que qualquer um dos materiais em seu site sejam precisos, completos ou atuais. Eu o Ryan pode fazer alterações nos materiais contidos em seu site a qualquer momento sem aviso. No entanto, Eu o Ryan não assume nenhum compromisso de atualizar os materiais.</p>
+            <p>Os materiais podem incluir erros técnicos, tipográficos ou fotográficos. O site não garante que os materiais sejam precisos, completos ou atuais. O site pode fazer alterações nos materiais a qualquer momento sem aviso, mas não assume compromisso de atualizar os materiais.</p>
 
-            <h2>6. Links</h2>
-            <p>Eu o Ryan não revisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de qualquer site vinculado. A inclusão de qualquer link não implica endosso por Eu o Ryan do site. O uso de qualquer site vinculado é por conta e risco do usuário.</p>
+            <h2>6. Links Externos</h2>
+            <p>O site não revisou todos os sites vinculados e não é responsável pelo conteúdo de qualquer site vinculado. A inclusão de qualquer link não implica endosso pelo site. O uso de qualquer site vinculado é por conta e risco do usuário.</p>
 
-            <h2>Modificações</h2>
-            <p>Eu o Ryan pode revisar estes termos de serviço para seu site a qualquer momento sem aviso. Ao usar este site, você concorda em estar vinculado à versão atual destes termos de serviço.</p>
+            <h2>7. Modificações dos Termos</h2>
+            <p>O site pode revisar estes termos de serviço a qualquer momento sem aviso. Ao usar este site, você concorda em estar vinculado à versão atual destes termos de serviço. É responsabilidade do usuário verificar periodicamente eventuais atualizações.</p>
 
-            <h2>Lei Aplicável</h2>
-            <p>Estes termos e condições são regidos e interpretados de acordo com as leis da jurisdição de Eu o Ryan, e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais nesse estado ou localidade.</p>
+            <h2>8. Lei Aplicável</h2>
+            <p>Estes termos e condições são regidos pelas leis da República Federativa do Brasil. Todas as questões relacionadas ao Site estarão sujeitas à jurisdição dos tribunais brasileiros competentes.</p>
+
+            <p>Se qualquer disposição destes termos for considerada inválida, as demais disposições permanecerão em vigor. Para questões relacionadas a estes Termos, entre em contato através das informações disponibilizadas no Site.</p>
         </div>
 
-        <a class="btn" href="../" style="cursor: pointer">
+        <a class="btn" href="../">
             <i class="fas fa-arrow-left"></i>
             Voltar
         </a>
     </main>
 
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
-      
-          function loadFooter() {
-              fetch(footerUrl)
-                  .then(response => {
-                      if (!response.ok) {
-                          throw new Error('Erro ao carregar o footer');
-                      }
-                      return response.text();
-                  })
-                  .then(html => {
-                      const footerContainer = document.createElement('div');
-                      footerContainer.innerHTML = html.trim();
-      
-                      const newFooter = footerContainer.querySelector('footer');
-      
-                      if (newFooter) {
-                          const existingFooter = document.querySelector('footer');
-                          if (existingFooter) {
-                              existingFooter.parentNode.replaceChild(newFooter, existingFooter);
-                          } else {
-                              document.body.appendChild(newFooter);
-                          }
-                      } else {
-                          throw new Error('Nenhum footer encontrado');
-                      }
-                  })
-                  .catch(error => {
-                      console.error('Erro ao carregar o footer:', error);
-                      
-                      const fallbackFooter = document.createElement('footer');
-                      fallbackFooter.className = 'footer';
-                      fallbackFooter.innerHTML = `
-                          <div class="footer-container">
-                              <div class="footer-rights">
-                                  <span>© 2024 por Ryan</span>
-                              </div>
-                          </div>
-                      `;
-                      
-                      const existingFooter = document.querySelector('footer');
-                      if (existingFooter) {
-                          existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
-                      } else {
-                          document.body.appendChild(fallbackFooter);
-                      }
-                  });
-          }
-      
-          loadFooter();
-      });
-  </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerUrl = 'https://raw.githubusercontent.com/euoryan/euoryan.github.io/refs/heads/main/assets/pages/footer.html';
+            const backToTopBtn = document.getElementById('backToTop');
+        
+            function loadFooter() {
+                fetch(footerUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar o footer');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const footerContainer = document.createElement('div');
+                        footerContainer.innerHTML = html.trim();
+        
+                        const newFooter = footerContainer.querySelector('footer');
+        
+                        if (newFooter) {
+                            const existingFooter = document.querySelector('footer');
+                            if (existingFooter) {
+                                existingFooter.parentNode.replaceChild(newFooter, existingFooter);
+                            } else {
+                                document.body.appendChild(newFooter);
+                            }
+                        } else {
+                            throw new Error('Nenhum footer encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar o footer:', error);
+                        
+                        const fallbackFooter = document.createElement('footer');
+                        fallbackFooter.className = 'footer';
+                        fallbackFooter.innerHTML = `
+                            <div class="footer-container">
+                                <div class="footer-rights">
+                                    <span>© 2024 por Ryan</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        const existingFooter = document.querySelector('footer');
+                        if (existingFooter) {
+                            existingFooter.parentNode.replaceChild(fallbackFooter, existingFooter);
+                        } else {
+                            document.body.appendChild(fallbackFooter);
+                        }
+                    });
+            }
+
+            function toggleBackToTop() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            window.addEventListener('scroll', toggleBackToTop);
+            
+            loadFooter();
+            toggleBackToTop();
+        });
+    </script>
 </body>
 </html>
