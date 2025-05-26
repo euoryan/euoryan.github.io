@@ -17,6 +17,13 @@
             --color-btn-border: #30363d;
             --color-text-hover: #ffffff;
             --color-footer-text: #8b949e;
+            --bg-primary: #0f1419;
+            --bg-secondary: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+            --link-color: #58a6ff;
+            --accent-color: #238636;
         }
 
         * {
@@ -37,24 +44,55 @@
             font-size: 14px;
         }
 
-        .header {
-            background-color: var(--color-header);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--color-border);
+        /* Navbar */
+        .navbar {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
+        .nav-container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none; /* Remove o underline no hover */
+        }
+
+        /* Container principal */
         .container {
             max-width: 750px;
             margin: 0 auto;
             padding: 0 16px;
             width: 100%;
-        }
-
-        h1 {
-            font-size: 22px;
-            color: #ffffff;
-            font-weight: 600;
-            letter-spacing: -0.5px;
         }
 
         .terms-content {
@@ -122,7 +160,7 @@
         .btn:hover {
             background-color: var(--color-btn-hover);
             color: var(--color-text-hover);
-            text-decoration: none;
+            text-decoration: none; /* Remove o underline no hover */
         }
 
         .back-to-top {
@@ -152,15 +190,16 @@
         .back-to-top:hover {
             background-color: var(--color-btn-hover);
             color: var(--color-text-hover);
-            text-decoration: none;
+            text-decoration: none; /* Remove o underline no hover */
         }
 
         main {
             flex: 1;
         }
 
+        /* Links gerais */
         a {
-            color: #58a6ff;
+            color: var(--link-color);
             text-decoration: none;
         }
 
@@ -168,6 +207,14 @@
             text-decoration: underline;
         }
 
+        /* Exceções para botões - sobrescreve o hover global */
+        .nav-back:hover,
+        .btn:hover,
+        .back-to-top:hover {
+            text-decoration: none !important;
+        }
+
+        /* Responsividade */
         @media (max-width: 790px) {
             .back-to-top {
                 right: 24px;
@@ -175,6 +222,14 @@
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .nav-title {
+                font-size: 16px;
+            }
+
             .container {
                 padding: 0 12px;
             }
@@ -184,23 +239,34 @@
                 margin: 24px 0;
             }
 
-            h1 {
-                font-size: 20px;
-            }
-
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
             }
         }
+
+        @media (max-width: 480px) {
+            .nav-title {
+                font-size: 16px;
+            }
+            
+            .nav-back {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>Termos de Uso</h1>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-title">Termos de Uso</div>
+            <a href="../" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </a>
         </div>
-    </header>
+    </nav>
 
     <main class="container">
         <div class="terms-content">
@@ -244,7 +310,7 @@
             <p>O site não revisou todos os sites vinculados e não é responsável pelo conteúdo de qualquer site vinculado. A inclusão de qualquer link não implica endosso pelo site. O uso de qualquer site vinculado é por conta e risco do usuário.</p>
 
             <h2>7. Modificações dos Termos</h2>
-            <p>O site pode revisar estes termos de serviço a qualquer momento sem aviso. Ao usar este site, você concorda em estar vinculado à versão atual destes termos de serviço. É responsabilidade do usuário verificar periodicamente eventuais atualizações.</p>
+            <p>O site pode revisar estes termos de serviço a qualquer tempo sem aviso. Ao usar este site, você concorda em estar vinculado à versão atual destes termos de serviço. É responsabilidade do usuário verificar periodicamente eventuais atualizações.</p>
 
             <h2>8. Lei Aplicável</h2>
             <p>Estes termos e condições são regidos pelas leis da República Federativa do Brasil. Todas as questões relacionadas ao Site estarão sujeitas à jurisdição dos tribunais brasileiros competentes.</p>
