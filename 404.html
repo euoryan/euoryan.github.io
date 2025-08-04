@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Página não encontrada</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>euoryan // 404</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -24,70 +27,67 @@
         }
 
         body {
+            background: var(--bg-color);
             color: var(--text-color);
-            background: linear-gradient(165deg, var(--bg-color) 60%, #0d1117 100%) fixed;
             line-height: 1.6;
             min-height: 100vh;
-            overflow: hidden;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            position: relative;
+            align-items: center;
+            padding: 2rem 1rem;
         }
 
         .container {
-            text-align: center;
-            position: relative;
-            z-index: 10;
             max-width: 600px;
+            width: 100%;
+            text-align: center;
             padding: 2rem;
         }
 
         .error-code {
             font-size: 8rem;
-            font-weight: 900;
+            font-weight: 700;
             color: var(--accent-color);
+            line-height: 1;
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            animation: glitch 2s infinite;
-        }
-
-        .error-code::before,
-        .error-code::after {
-            content: '404';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .error-code::before {
-            animation: glitch-1 2s infinite;
-            color: #ff0040;
-            z-index: -1;
-        }
-
-        .error-code::after {
-            animation: glitch-2 2s infinite;
-            color: #00ff40;
-            z-index: -2;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         .error-title {
             font-size: 2rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-color);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
-        .error-message {
+        .error-description {
             font-size: 1.1rem;
             color: var(--secondary-text);
-            margin-bottom: 3rem;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .domain-info {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .domain-info .domain {
+            color: var(--accent-color);
+            font-weight: 600;
         }
 
         .buttons {
@@ -95,246 +95,72 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
         }
 
         .btn {
-            position: relative;
-            overflow: hidden;
-            background: var(--card-bg);
-            color: var(--text-color);
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.25s ease-in-out;
-            cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            min-width: 150px;
-            justify-content: center;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 20%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(30deg);
-            transition: all 0.6s ease;
+            padding: 0.75rem 1.5rem;
+            background: var(--card-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .btn:hover {
             background: var(--hover-bg);
             border-color: var(--text-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:hover::after {
-            left: 120%;
+            transform: translateY(-1px);
         }
 
         .btn-primary {
             background: var(--accent-color);
             border-color: var(--accent-color);
+            color: white;
         }
 
         .btn-primary:hover {
             background: #c82333;
             border-color: #c82333;
+            color: white;
         }
 
-        .floating-icons {
+        .github-cat {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: rgba(201, 209, 217, 0.1);
+            transform: rotate(15deg);
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
         }
 
-        .floating-icon {
-            position: absolute;
-            color: rgba(220, 53, 69, 0.1);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-icon:nth-child(1) {
-            top: 10%;
-            left: 10%;
-            font-size: 2rem;
-            animation-delay: 0s;
-        }
-
-        .floating-icon:nth-child(2) {
-            top: 20%;
-            right: 15%;
-            font-size: 1.5rem;
-            animation-delay: 1s;
-        }
-
-        .floating-icon:nth-child(3) {
-            top: 60%;
-            left: 5%;
-            font-size: 1.8rem;
-            animation-delay: 2s;
-        }
-
-        .floating-icon:nth-child(4) {
-            bottom: 20%;
-            right: 10%;
-            font-size: 2.2rem;
-            animation-delay: 3s;
-        }
-
-        .floating-icon:nth-child(5) {
-            bottom: 40%;
-            left: 20%;
-            font-size: 1.6rem;
-            animation-delay: 4s;
-        }
-
-        @keyframes glitch {
-            0% {
-                text-shadow: 0.05em 0 0 #ff0040, -0.05em -0.025em 0 #00ff40, 0.025em 0.05em 0 #ffff40;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            15% {
-                text-shadow: 0.05em 0 0 #ff0040, -0.05em -0.025em 0 #00ff40, 0.025em 0.05em 0 #ffff40;
-            }
-            16% {
-                text-shadow: -0.05em -0.025em 0 #ff0040, 0.025em 0.025em 0 #00ff40, -0.05em -0.05em 0 #ffff40;
-            }
-            49% {
-                text-shadow: -0.05em -0.025em 0 #ff0040, 0.025em 0.025em 0 #00ff40, -0.05em -0.05em 0 #ffff40;
-            }
-            50% {
-                text-shadow: 0.025em 0.05em 0 #ff0040, 0.05em 0 0 #00ff40, 0 -0.05em 0 #ffff40;
-            }
-            99% {
-                text-shadow: 0.025em 0.05em 0 #ff0040, 0.05em 0 0 #00ff40, 0 -0.05em 0 #ffff40;
-            }
-            100% {
-                text-shadow: -0.025em 0 0 #ff0040, -0.025em -0.025em 0 #00ff40, -0.025em -0.05em 0 #ffff40;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @keyframes glitch-1 {
-            0% {
-                clip: rect(64px, 9999px, 66px, 0);
-                transform: skew(0.5deg);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
             }
-            5% {
-                clip: rect(30px, 9999px, 36px, 0);
-                transform: skew(0.1deg);
-            }
-            10% {
-                clip: rect(70px, 9999px, 71px, 0);
-                transform: skew(0.8deg);
-            }
-            15% {
-                clip: rect(30px, 9999px, 32px, 0);
-                transform: skew(0.2deg);
-            }
-            20% {
-                clip: rect(50px, 9999px, 52px, 0);
-                transform: skew(0.4deg);
-            }
-            25% {
-                clip: rect(10px, 9999px, 12px, 0);
-                transform: skew(0.6deg);
-            }
-            30% {
-                clip: rect(40px, 9999px, 42px, 0);
-                transform: skew(0.3deg);
-            }
-            35% {
-                clip: rect(80px, 9999px, 82px, 0);
-                transform: skew(0.7deg);
-            }
-            40% {
-                clip: rect(20px, 9999px, 22px, 0);
-                transform: skew(0.1deg);
-            }
-            45% {
-                clip: rect(60px, 9999px, 62px, 0);
-                transform: skew(0.5deg);
-            }
-            50% {
-                clip: rect(35px, 9999px, 37px, 0);
-                transform: skew(0.2deg);
-            }
-            100% {
-                clip: rect(0, 9999px, 0, 0);
-                transform: skew(0deg);
-            }
-        }
-
-        @keyframes glitch-2 {
-            0% {
-                clip: rect(65px, 9999px, 119px, 0);
-                transform: skew(0.4deg);
-            }
-            5% {
-                clip: rect(25px, 9999px, 30px, 0);
-                transform: skew(0.2deg);
-            }
-            10% {
-                clip: rect(75px, 9999px, 85px, 0);
-                transform: skew(0.6deg);
-            }
-            15% {
-                clip: rect(35px, 9999px, 45px, 0);
-                transform: skew(0.3deg);
-            }
-            20% {
-                clip: rect(55px, 9999px, 65px, 0);
-                transform: skew(0.5deg);
-            }
-            25% {
-                clip: rect(15px, 9999px, 25px, 0);
-                transform: skew(0.1deg);
-            }
-            30% {
-                clip: rect(45px, 9999px, 55px, 0);
-                transform: skew(0.4deg);
-            }
-            35% {
-                clip: rect(85px, 9999px, 95px, 0);
-                transform: skew(0.7deg);
-            }
-            40% {
-                clip: rect(25px, 9999px, 35px, 0);
-                transform: skew(0.2deg);
-            }
-            45% {
-                clip: rect(65px, 9999px, 75px, 0);
-                transform: skew(0.6deg);
-            }
-            50% {
-                clip: rect(40px, 9999px, 50px, 0);
-                transform: skew(0.3deg);
-            }
-            100% {
-                clip: rect(0, 9999px, 0, 0);
-                transform: skew(0deg);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-                opacity: 0.1;
+            to {
+                opacity: 1;
             }
         }
 
@@ -347,7 +173,7 @@
                 font-size: 1.5rem;
             }
 
-            .error-message {
+            .error-description {
                 font-size: 1rem;
             }
 
@@ -357,66 +183,90 @@
             }
 
             .btn {
-                width: 200px;
+                width: 100%;
+                max-width: 200px;
+                justify-content: center;
+            }
+
+            .github-cat {
+                display: none;
             }
 
             .container {
                 padding: 1rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 4.5rem;
+            }
+
+            .domain-info {
+                font-size: 0.8rem;
+                padding: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="floating-icons">
-        <i class="floating-icon fas fa-code"></i>
-        <i class="floating-icon fas fa-bug"></i>
-        <i class="floating-icon fas fa-exclamation-triangle"></i>
-        <i class="floating-icon fas fa-question-circle"></i>
-        <i class="floating-icon fas fa-search"></i>
-    </div>
-
     <div class="container">
         <div class="error-code">404</div>
         <h1 class="error-title">Página não encontrada</h1>
-        <p class="error-message">
-            Ops! Parece que você se perdeu no código. A página que você está procurando não existe ou foi movida para outro lugar.
+        <p class="error-description">
+            A página que você está procurando não existe ou foi movida. 
+            Verifique a URL ou retorne à página inicial.
         </p>
         
+        <div class="domain-info">
+            <div>Domínio: <span class="domain">euoryan.com</span></div>
+            <div>Status: Página não disponível</div>
+        </div>
+
         <div class="buttons">
             <a href="javascript:history.back()" class="btn">
                 <i class="fas fa-arrow-left"></i>
                 Voltar
             </a>
-            <a href="index.html" class="btn btn-primary">
+            <a href="https://euoryan.com" class="btn btn-primary">
                 <i class="fas fa-home"></i>
                 Página Inicial
             </a>
         </div>
     </div>
 
+    <div class="github-cat">
+        <i class="fab fa-github"></i>
+    </div>
+
     <script>
-        // Efeito de parallax nos ícones flutuantes
-        document.addEventListener('mousemove', (e) => {
-            const icons = document.querySelectorAll('.floating-icon');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+        // Adiciona um pequeno efeito de hover nos botões
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
             
-            icons.forEach((icon, index) => {
-                const speed = (index + 1) * 0.5;
-                const xPos = (x - 0.5) * speed * 50;
-                const yPos = (y - 0.5) * speed * 50;
-                
-                icon.style.transform = `translate(${xPos}px, ${yPos}px) rotate(${xPos}deg)`;
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
             });
         });
 
-        // Adiciona um pequeno shake no erro 404 quando clicado
-        document.querySelector('.error-code').addEventListener('click', function() {
-            this.style.animation = 'none';
-            setTimeout(() => {
-                this.style.animation = 'glitch 2s infinite';
-            }, 10);
-        });
+        // Efeito de digitação no código de erro (opcional)
+        const errorCode = document.querySelector('.error-code');
+        let originalText = errorCode.textContent;
+        errorCode.textContent = '';
+        
+        setTimeout(() => {
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    errorCode.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 150);
+                }
+            };
+            typeWriter();
+        }, 500);
     </script>
 </body>
 </html>
