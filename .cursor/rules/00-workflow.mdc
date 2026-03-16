@@ -1,0 +1,43 @@
+---
+description: fluxo de trabalho (branch beta/main), versão e commit
+alwaysapply: true
+---
+
+sempre trabalhar e commitar na branch beta. nunca commitar na main por conta própria.
+
+se o usuário disser que gostou e pedir para subir (ex.: merge, sobe pra main, gostei, pode mergear), fazer o merge de beta em main e realizar o push, mantendo na main os mesmos commits que foram feitos na beta.
+
+se o usuário pedir explicitamente alteração direto na main, então é permitido trabalhar e commitar na main.
+
+se o usuário estiver em outra branch ao solicitar alteração, avisar e orientar a trocar para beta antes de editar (exceto se o pedido for explicitamente para a main).
+
+sempre atualizar a versão do app quando houver mudanças:
+- alterar version em config.py
+- atualizar o exemplo de versão no readme.md
+
+caso o projeto ainda não possua controle de versão visível no app ou no projeto, sugerir ao usuário adicionar.
+
+sempre fornecer o texto sugerido para o commit seguindo o padrão conventional commits.
+
+o commit deve:
+- seguir o padrão convencional (ex.: fix, feat, refactor, style, docs, chore, etc.)
+- estar totalmente em minúsculo
+- ser curto e objetivo
+- conter apenas uma linha resumindo a alteração
+
+exemplo:
+fix: botao voltar minimo na ver orcamento
+
+se for necessário fazer commit e sync/push por conta própria, é extremamente importante não incluir qualquer assinatura automática como:
+
+made-with: cursor
+
+o commit deve seguir estritamente o padrão definido acima.
+
+sempre que realizar merge de beta em main, informar:
+- a versão final resultante
+- a lista do que foi alterado
+
+a lista deve conter um item por linha, seguindo o mesmo padrão de commit (ex.: fix, feat, refactor, etc.), curto e objetivo, para que o usuário tenha clareza do que mudou.
+
+em nenhuma situação incluir menções indicando que o commit foi feito pelo cursor.
