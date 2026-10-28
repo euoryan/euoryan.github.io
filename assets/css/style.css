@@ -24,7 +24,7 @@ button{font:inherit;color:inherit}
 
 /* ===== home ===== */
 body.home{height:100vh;height:100dvh;min-height:0;overflow:hidden;background:var(--h-bg);font-family:var(--home);font-size:14px;line-height:1.4;color:var(--h-ink)}
-.intro{--lw:100.65px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;width:516px;max-width:100%;height:100%;margin:0 auto}
+.intro{--lw:181.83px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;width:calc(var(--lw) + 416px);max-width:100%;height:100%;margin:0 auto}
 .hero,.line{display:flex;align-items:flex-end;gap:24px;width:100%}
 .hero{height:60px}
 .mark-wrap,.sp{flex:none;width:var(--lw)}
