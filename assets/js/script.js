@@ -13,16 +13,6 @@ document.querySelectorAll('[data-copy]').forEach(b => {
   });
 });
 
-// home: tooltip com as páginas sobre a logo; no toque, abre e fecha pelo clique
-const mw = document.querySelector('.mark-wrap');
-if (mw) {
-  const mark = mw.querySelector('.mark');
-  const set = on => { mw.classList.toggle('open', on); mark.setAttribute('aria-expanded', on); };
-  mark.addEventListener('click', e => { e.stopPropagation(); set(!mw.classList.contains('open')); });
-  document.addEventListener('click', e => { if (!mw.contains(e.target)) set(false); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
-}
-
 // internas: o status abre ao carregar; no celular recolhe sozinho e abre pelo toque
 const st = document.querySelector('.status');
 if (st) {

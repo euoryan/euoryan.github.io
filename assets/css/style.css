@@ -8,8 +8,8 @@
   --col:min(720px,100% - 48px);
   --island:rgba(255,255,255,.82); --chip:#f4f4f4;
   --h-bg:#f5f5f5; --h-ink:#000; --h-mark:#1f1f1f; --h-hr:rgba(0,0,0,.04);
-  --h-soft:.4; --h-stroke:.25px; --h-tip:#fff; --h-tipline:#d4d4d4;
-  --h-tiptext:rgba(0,0,0,.45); --h-tick:rgba(0,0,0,.35); --h-tickb:rgba(0,0,0,.5);
+  --h-soft:.4; --h-stroke:.25px;
+  --h-tick:rgba(0,0,0,.35); --h-tickb:rgba(0,0,0,.5);
 }
 @font-face{font-family:'Neue Montreal';src:url(../fonts/neue-montreal-light.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:'Neue Montreal';src:url(../fonts/neue-montreal-medium.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
@@ -24,23 +24,14 @@ button{font:inherit;color:inherit}
 
 /* ===== home ===== */
 body.home{height:100vh;height:100dvh;min-height:0;overflow:hidden;background:var(--h-bg);font-family:var(--home);font-size:14px;line-height:1.4;color:var(--h-ink)}
-.intro{--lw:100px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;width:516px;max-width:100%;height:100%;margin:0 auto}
+.intro{--lw:100.65px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;width:516px;max-width:100%;height:100%;margin:0 auto}
 .hero,.line{display:flex;align-items:flex-end;gap:24px;width:100%}
 .hero{height:60px}
 .mark-wrap,.sp{flex:none;width:var(--lw)}
 .sp{align-self:stretch;padding-bottom:4px}
 .mark-wrap{position:relative;padding-bottom:4px}
-.mark{all:unset;display:block;cursor:pointer;color:var(--h-mark);transition:color .15s}
+.mark{display:block;color:var(--h-mark)}
 .mark .logo{display:block;height:56px;width:auto;fill:currentColor}
-.mark-wrap:hover .mark,.mark-wrap.open .mark{color:var(--h-ink)}
-.mark:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:6px}
-.mark-wrap::before{content:"";position:absolute;bottom:100%;left:26px;width:1px;height:20px;background:var(--h-tipline);transform:rotate(45deg) scaleY(0);transform-origin:bottom;transition:transform 60ms}
-.tip{position:absolute;bottom:calc(100% + 14px);left:32px;z-index:5;display:flex;padding:0 3px;background:var(--h-tip);border:1px solid var(--h-tipline);border-radius:6px;white-space:nowrap;visibility:hidden;opacity:0;transform:translateY(3px);transition:opacity 60ms,transform 60ms,visibility 0s 60ms}
-.tip a{padding:3px 6px;font-size:11px;font-weight:500;line-height:1.4;letter-spacing:.01em;color:var(--h-tiptext);transition:color 60ms}
-.tip a:hover,.tip a:focus-visible{color:var(--h-ink);outline:0}
-.tip::after{content:"";position:absolute;left:-40px;right:0;top:100%;height:18px}
-.mark-wrap:hover::before,.mark-wrap:focus-within::before,.mark-wrap.open::before{transform:rotate(45deg);transition:transform 90ms ease-out}
-.mark-wrap:hover .tip,.mark-wrap:focus-within .tip,.mark-wrap.open .tip{visibility:visible;opacity:1;transform:none;transition:opacity 120ms ease-out 70ms,transform 160ms cubic-bezier(.2,.8,.2,1) 70ms,visibility 0s}
 .lead,.soft,.line hr{flex:1 1 0;min-width:0}
 .lead{font-weight:500;color:var(--h-ink);opacity:.8}
 .line hr{border:0;height:1px;background:var(--h-hr)}
