@@ -1,1 +1,0 @@
-pyinstaller --onefile --windowed --name "tokengen" tokengen.py

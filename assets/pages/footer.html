@@ -1,86 +1,105 @@
-<footer class="footer">
+<footer class="footer eu-ft">
+    <!-- mantidos para sites antigos que usam ícones ou a fonte carregados por este arquivo -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-      
-      .footer {
-        margin-top: auto;
-        padding: 20px 0;
-        font-size: 12px;
-        color: #8b949e;
-        border-top: 1px solid #30363d;
-        background-color: #0d1117;
-        text-align: center;
-        font-family: 'Ubuntu', sans-serif;
+
+      /* sem fundo próprio: herda a cor do texto do site, então funciona em tema claro e escuro */
+      footer.eu-ft {
+        box-sizing: border-box;
+        display: block;
+        position: static;
+        float: none;
+        clear: both;
+        width: 100%;
+        max-width: none;
+        margin: auto 0 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        color: inherit;
+        font: 400 12px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        letter-spacing: normal;
+        text-align: left;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        container-type: inline-size;
       }
- 
-      .footer-container {
+      /* neutraliza regras do site em tags e seletores genéricos (div, a, *) */
+      footer.eu-ft .eu-ft-in, footer.eu-ft .eu-ft-in * {
+        box-sizing: border-box;
+        position: static;
+        inset: auto;
+        float: none;
+        transform: none;
+        z-index: auto;
+        width: auto;
+        height: auto;
+        min-width: 0;
+        min-height: 0;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+        color: inherit;
+        font: inherit;
+        letter-spacing: inherit;
+        text-transform: none;
+        text-decoration: none;
+        visibility: visible;
+      }
+      footer.eu-ft .eu-ft-in {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 24px;
+        width: 100%;
         max-width: 1200px;
-        margin: auto;
-        padding: 0 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+        margin: 0 auto;
+        padding: 18px 24px;
+        padding-bottom: max(18px, env(safe-area-inset-bottom));
+        border-top: 1px solid rgba(128, 128, 128, .25);
+        border-top-color: color-mix(in srgb, currentColor 18%, transparent);
       }
- 
-      .footer-links,
-      .footer-icons {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
+      footer.eu-ft .eu-ft-c { display: block; opacity: .55; white-space: nowrap; }
+      footer.eu-ft .eu-ft-in a.eu-ft-a { white-space: nowrap; }
+      footer.eu-ft .eu-ft-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; }
+      footer.eu-ft .eu-ft-in a.eu-ft-a {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 0;
+        opacity: .55;
+        cursor: pointer;
+        transition: opacity .15s;
       }
- 
-      .footer-links a,
-      .footer-icons a {
-        color: #8b949e;
-        text-decoration: none;
-        transition: color 0.3s;
+      footer.eu-ft .eu-ft-in a.eu-ft-a:hover, footer.eu-ft .eu-ft-in a.eu-ft-a:focus-visible { opacity: 1; }
+      footer.eu-ft .eu-ft-in a.eu-ft-a:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; border-radius: 2px; }
+      footer.eu-ft .eu-ft-in .eu-ft-a svg { display: block; width: 14px; height: 14px; fill: currentColor; }
+      /* empilhado e centralizado quando falta espaço: pela largura da tela e, onde houver suporte, pela largura do próprio rodapé */
+      @media (max-width: 640px) {
+        footer.eu-ft .eu-ft-in { flex-direction: column-reverse; justify-content: center; text-align: center; padding-left: 16px; padding-right: 16px; }
+        footer.eu-ft .eu-ft-nav { justify-content: center; }
+        footer.eu-ft .eu-ft-c { white-space: normal; }
       }
- 
-      .footer-links a:hover,
-      .footer-icons a:hover {
-        color: #ffffff;
-      }
- 
-      .footer-icons a {
-        font-size: 18px;
-      }
- 
-      .footer-rights {
-        font-size: 12px;
-        color: #8b949e;
-      }
- 
-      .footer-rights a {
-        color: #8b949e;
-        font-weight: bold;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
- 
-      .footer-rights a:hover {
-        color: #ffffff;
+      @container (max-width: 640px) {
+        footer.eu-ft .eu-ft-in { flex-direction: column-reverse; justify-content: center; text-align: center; padding-left: 16px; padding-right: 16px; }
+        footer.eu-ft .eu-ft-nav { justify-content: center; }
+        footer.eu-ft .eu-ft-c { white-space: normal; }
       }
     </style>
- 
-    <div class="footer-container">
-      <div class="footer-links">
-        <a href="https://euoryan.com/politica/">Política de Privacidade</a>
-        <a href="https://euoryan.com/termos/">Termos de Uso</a>
-        <a href="https://euoryan.com/contato/">Contato</a>
-      </div>
- 
-      <div class="footer-icons">
-        <a href="https://github.com/euoryan" target="_blank" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
- 
-      <div class="footer-rights">
-        <span>© 2025 por </span>
-        <a href="https://github.com/euoryan" target="_blank">Ryan</a>.
-        <span> Todos os direitos reservados.</span>
+
+    <div class="eu-ft-in">
+      <div class="eu-ft-c">© euoryan. Todos os direitos reservados.</div>
+      <div class="eu-ft-nav" role="navigation" aria-label="Links do rodapé">
+        <a class="eu-ft-a" href="https://euoryan.com/politica/">Privacidade</a>
+        <a class="eu-ft-a" href="https://euoryan.com/termos/">Termos</a>
+        <a class="eu-ft-a" href="https://euoryan.com/contato/">Contato</a>
+        <a class="eu-ft-a" href="https://github.com/euoryan" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
       </div>
     </div>
   </footer>
