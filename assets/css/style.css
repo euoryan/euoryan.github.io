@@ -45,7 +45,7 @@ body.home{height:100vh;height:100dvh;min-height:0;overflow:hidden;background:var
 .below{position:absolute;top:calc(100% + 24px);left:calc(var(--lw) + 24px);right:0;display:grid}
 .below>*{grid-area:1/1}
 .tick{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
-.track{display:flex;gap:32px;width:max-content;animation:slide 60s linear infinite}
+.track{display:flex;gap:32px;width:max-content;animation:slide 114s linear infinite}
 .track span{font-size:12px;font-weight:300;color:var(--h-tick);white-space:nowrap}
 .track b{font-weight:500;color:var(--h-tickb);margin-right:6px}
 @keyframes slide{to{transform:translateX(-50%)}}
