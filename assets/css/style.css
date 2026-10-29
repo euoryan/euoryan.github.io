@@ -11,6 +11,7 @@
   --h-soft:.4; --h-stroke:.25px;
   --h-tick:rgba(0,0,0,.35); --h-tickb:rgba(0,0,0,.5);
 }
+@font-face{font-family:'Space Grotesk';src:url(../fonts/space-grotesk-latin.woff2) format('woff2');font-weight:300 700;font-style:normal;font-display:swap}
 @font-face{font-family:'Neue Montreal';src:url(../fonts/neue-montreal-light.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:'Neue Montreal';src:url(../fonts/neue-montreal-medium.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
 *{box-sizing:border-box;margin:0;padding:0}
