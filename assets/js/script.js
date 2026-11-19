@@ -27,3 +27,47 @@ if (st) {
   st.addEventListener('click', () => { if (small.matches) st.classList.contains('open') ? st.classList.remove('open') : open(); });
   small.addEventListener('change', () => small.matches ? st.classList.remove('open') : st.classList.add('open'));
 }
+
+/* Assinatura no console do navegador, uma vez por carregamento (mesmo padrão do Pegasus). */
+(function () {
+  const LOGO = [
+    '         _nnnn_',
+    '        dGGGGMMb',
+    '       @p~qp~~qMb',
+    '       M|@||@) M|',
+    '       @,----.JM|',
+    '      JS^\\__/  qKL',
+    '     dZP        qKRb',
+    '    dZP          qKKb',
+    '   fZP            SMMb',
+    '   HZM            MMMM',
+    '   FqM            MMMM',
+    ' __| ".        |\\dS"qML',
+    " |    `.       | `' \\Zq",
+    "_)      \\.___.,|     .'",
+    "\\____   )MMMMMP|   .'",
+    "     `-'       `--' ryan",
+  ];
+  const NOME = [
+    '███████╗ ██╗   ██╗  ██████╗  ██████╗  ██╗   ██╗  █████╗  ███╗   ██╗',
+    '██╔════╝ ██║   ██║ ██╔═══██╗ ██╔══██╗ ╚██╗ ██╔╝ ██╔══██╗ ████╗  ██║',
+    '█████╗   ██║   ██║ ██║   ██║ ██████╔╝  ╚████╔╝  ███████║ ██╔██╗ ██║',
+    '██╔══╝   ██║   ██║ ██║   ██║ ██╔══██╗   ╚██╔╝   ██╔══██║ ██║╚██╗██║',
+    '███████╗ ╚██████╔╝ ╚██████╔╝ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║',
+    '╚══════╝  ╚═════╝   ╚═════╝  ╚═╝  ╚═╝    ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝',
+  ];
+  const FAIXA = 'EUORYAN.COM  ·  DESENVOLVEDOR FULL STACK';
+  const LARGURA = 67;
+  const centrar = (linha) => ' '.repeat(Math.max(0, Math.floor((LARGURA - linha.length) / 2))) + linha;
+  // O desenho do pinguim mantém o recuo relativo; o bloco inteiro é centrado uma vez.
+  const padLogo = ' '.repeat(Math.max(0, Math.floor((LARGURA - Math.max(...LOGO.map((l) => l.length))) / 2)));
+  const FONTE = "font-family:Menlo,Consolas,'DejaVu Sans Mono',monospace";
+  const ESTILO_ARTE = `${FONTE};font-size:10px;line-height:11px;display:inline-block`;
+  const ESTILO_INFO = `${FONTE};font-size:11px;color:#8b8b8b`;
+  const ESTILO_AVISO = 'font-size:12px;font-weight:600;color:#e5484d';
+  const arte = ['', ...LOGO.map((l) => padLogo + l), '', '', ...NOME.map(centrar), '', centrar(FAIXA), ''].join('\n');
+  const info = 'euoryan  ·  Desenvolvedor full stack  ·  euoryan.com';
+  const aviso =
+    'Pare. Este console é para quem desenvolve. Se alguém pediu para você colar algo aqui, é golpe: o código pode tomar a sua conta.';
+  console.log(`%c${arte}%c\n\n${info}\n\n%c${aviso}`, ESTILO_ARTE, ESTILO_INFO, ESTILO_AVISO);
+})();
